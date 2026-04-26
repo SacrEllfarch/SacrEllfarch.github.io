@@ -1,0 +1,59 @@
+// Site-level layout polish for the Sakura theme.
+
+.sakura-braced-text {
+  padding-inline: 0;
+
+  &::before,
+  &::after {
+    content: none !important;
+    display: none;
+  }
+}
+
+.has-page-layout,
+.has-undefined-layout {
+  .sakura-main {
+    box-sizing: border-box;
+    min-height: calc(100vh - var(--sakura-navbar-height));
+    padding:
+      calc(var(--sakura-navbar-height) + 1.5rem)
+      max(20px, env(safe-area-inset-left))
+      2.5rem;
+  }
+
+  .markdown-body,
+  .prose {
+    box-sizing: border-box;
+    width: min(100%, 65ch);
+    margin-inline: auto;
+  }
+}
+
+.has-tags-layout,
+.has-categories-layout,
+.has-archives-layout,
+.has-links-layout {
+  .sakura-page {
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .sakura-page-content {
+    box-sizing: border-box;
+    width: min(100%, 760px);
+    margin-inline: auto;
+  }
+}
+
+.has-categories-layout {
+  .sakura-page-content {
+    text-align: center;
+  }
+
+  .category-list {
+    display: flex;
+    justify-content: center;
+    margin-left: 0;
+    padding-left: 0;
+  }
+}

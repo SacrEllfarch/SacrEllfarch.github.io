@@ -1,0 +1,25 @@
+{
+  "name": "thx",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm run build:ssg",
+    "build:spa": "valaxy build",
+    "build:ssg": "valaxy build --ssg",
+    "dev": "valaxy",
+    "rss": "valaxy rss",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "valaxy": "0.28.5",
+    "valaxy-addon-hitokoto": "^0.0.1",
+    "valaxy-addon-vercount": "^0.0.7",
+    "valaxy-theme-sakura": "0.10.2"
+  },
+  "devDependencies": {
+    "@iconify-json/mdi": "^1.2.3",
+    "@iconify-json/ri": "^1.2.10",
+    "typescript": "^5.9.3"
+  }
+}

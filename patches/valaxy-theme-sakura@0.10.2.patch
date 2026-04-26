@@ -1,0 +1,25 @@
+diff --git a/valaxy.config.ts b/valaxy.config.ts
+index 61a2b1b807482d2eda236ecc757dc435c59503a2..909cf1e789e26f5a0574ee6730c69068af7fda83 100644
+--- a/valaxy.config.ts
++++ b/valaxy.config.ts
+@@ -11,16 +11,16 @@ export default defineTheme<ThemeUserConfig>((options) => {
+   const themeConfig = defu(userThemeConfig, defaultThemeConfig) as ThemeConfig
+ 
+   if (siteConfig.search?.enable && !userThemeConfig.navbarOptions?.tools?.includes('search'))
+-    defaultThemeConfig.navbarOptions.tools.push('search')
++    themeConfig.navbarOptions.tools.push('search')
+ 
+   if (userThemeConfig.navbarOptions?.tools)
+-    defaultThemeConfig.navbarOptions.tools = []
++    themeConfig.navbarOptions.tools = []
+ 
+   if (userThemeConfig.banner)
+-    defaultThemeConfig.hero = { ...userThemeConfig.banner, ...userThemeConfig.hero } as Hero
++    themeConfig.hero = { ...userThemeConfig.banner, ...userThemeConfig.hero } as Hero
+ 
+   return {
+-    themeConfig: defaultThemeConfig,
++    themeConfig,
+ 
+     vite: {
+       plugins: [
