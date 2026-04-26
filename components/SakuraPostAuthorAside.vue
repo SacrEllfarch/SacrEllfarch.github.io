@@ -58,22 +58,44 @@ const tags = computed(() => {
       <div class="sakura-post-author-meta">
         <div v-if="publishedDate" class="sakura-post-author-row">
           <span class="i-ri-calendar-line sakura-post-author-icon" />
-          <span>{{ publishedDate }}</span>
+          <RouterLink to="/archives/" class="sakura-post-author-link">
+            {{ publishedDate }}
+          </RouterLink>
         </div>
 
         <div v-if="updatedDate && updatedDate !== publishedDate" class="sakura-post-author-row">
           <span class="i-ri-refresh-line sakura-post-author-icon" />
-          <span>{{ updatedDate }}</span>
+          <RouterLink to="/archives/" class="sakura-post-author-link">
+            {{ updatedDate }}
+          </RouterLink>
         </div>
 
         <div v-if="categories.length" class="sakura-post-author-row">
           <span class="i-ri-folder-2-line sakura-post-author-icon" />
-          <span>{{ categories.join(' / ') }}</span>
+          <div class="sakura-post-author-links">
+            <RouterLink
+              v-for="category in categories"
+              :key="category"
+              :to="{ path: '/categories/', query: { category } }"
+              class="sakura-post-author-link"
+            >
+              {{ category }}
+            </RouterLink>
+          </div>
         </div>
 
         <div v-if="tags.length" class="sakura-post-author-row tags">
           <span class="i-ri-price-tag-3-line sakura-post-author-icon" />
-          <span>{{ tags.join(' / ') }}</span>
+          <div class="sakura-post-author-links">
+            <RouterLink
+              v-for="tag in tags"
+              :key="tag"
+              :to="{ path: '/tags/', query: { tag } }"
+              class="sakura-post-author-link"
+            >
+              {{ tag }}
+            </RouterLink>
+          </div>
         </div>
       </div>
     </section>
@@ -144,6 +166,7 @@ const tags = computed(() => {
   line-height: 1.55;
   opacity: 0.76;
   text-align: center;
+  white-space: pre-line;
 }
 
 .sakura-post-author-social {
@@ -168,6 +191,39 @@ const tags = computed(() => {
   line-height: 1.45;
   opacity: 0.82;
   overflow-wrap: anywhere;
+}
+
+.sakura-post-author-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sakura-post-author-link {
+  display: inline-flex;
+  min-width: 0;
+  max-width: 100%;
+  align-items: center;
+  border: 1px solid color-mix(in srgb, var(--sakura-color-primary) 24%, transparent);
+  border-radius: 999px;
+  padding: 3px 8px;
+  color: var(--sakura-color-text);
+  background: color-mix(in srgb, var(--sakura-color-primary) 8%, transparent);
+  font-size: 0.78rem;
+  line-height: 1.3;
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+
+  &:hover {
+    border-color: var(--sakura-color-primary);
+    color: var(--sakura-color-primary);
+    background: color-mix(in srgb, var(--sakura-color-primary) 14%, transparent);
+    transform: translateY(-1px);
+  }
 }
 
 .sakura-post-author-icon {

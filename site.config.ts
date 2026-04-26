@@ -16,7 +16,7 @@ export default defineSiteConfig({
     link: 'https://github.com/SacrEllfarch',
     avatar: '/avatar.jpg',
   },
-  description: '记录学习与生活',
+  description: '把身心交予自由\n任其漂流',
   social: [
     {
       name: 'GitHub',

@@ -116,7 +116,7 @@ export default defineValaxyConfig<ThemeUserConfig>({
     author: {
       name: 'SacrEllfarch',
     },
-    description: '记录学习与生活',
+    description: '把身心交予自由\n任其漂流',
   },
 
   themeConfig: {
@@ -158,7 +158,7 @@ export default defineValaxyConfig<ThemeUserConfig>({
     ],
     navbarOptions: {
       title: ['SacrEllfarch', 'Blog'],
-      subTitle: '记录学习与生活',
+      subTitle: '把身心交予自由\n任其漂流',
       showMarker: false,
       autoHide: ['home'],
       invert: ['home'],
