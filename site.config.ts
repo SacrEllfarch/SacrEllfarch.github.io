@@ -1,10 +1,12 @@
 import { defineSiteConfig } from 'valaxy'
 
+const favicon = '/favicon.png?v=terchdox-20260427'
+
 export default defineSiteConfig({
   url: 'https://sacrellfarch.github.io/',
-  favicon: '/favicon.png',
+  favicon,
   feed: {
-    favicon: '/favicon.png',
+    favicon,
   },
   lang: 'zh-CN',
   title: '我的博客',
