@@ -2,6 +2,10 @@ import { defineSiteConfig } from 'valaxy'
 
 export default defineSiteConfig({
   url: 'https://sacrellfarch.github.io/',
+  favicon: '/favicon.png',
+  feed: {
+    favicon: '/favicon.png',
+  },
   lang: 'zh-CN',
   title: '我的博客',
   author: {
