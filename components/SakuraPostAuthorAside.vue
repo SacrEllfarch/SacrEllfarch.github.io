@@ -163,6 +163,8 @@ const tags = computed(() => {
   margin: 0;
   color: var(--sakura-color-text);
   font-size: 0.85rem;
+  font-style: italic;
+  font-weight: 300;
   line-height: 1.55;
   opacity: 0.76;
   text-align: center;
