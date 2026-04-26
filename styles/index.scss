@@ -24,6 +24,28 @@
   white-space: pre-line;
 }
 
+.sakura-home {
+  width: 100%;
+}
+
+.sakura-home > .sakura-home-layout.sakura-one-columns {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 880px;
+  margin-inline: auto;
+  justify-content: center;
+}
+
+.sakura-home-layout {
+  .sakura-post-list,
+  .post-list-container,
+  .post-list-section,
+  .sakura-post-card {
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
+
 .has-page-layout,
 .has-undefined-layout {
   .sakura-main {
