@@ -14,7 +14,7 @@ export default defineSiteConfig({
     name: 'SacrEllfarch',
     email: '2091538824thx@gmail.com',
     link: 'https://github.com/SacrEllfarch',
-    avatar: '/pwa-512x512.png',
+    avatar: '/avatar.jpg',
   },
   description: '记录学习与生活',
   social: [
