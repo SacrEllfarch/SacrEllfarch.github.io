@@ -46,6 +46,36 @@
   }
 }
 
+@media screen and (min-width: 768px) {
+  .sakura-home-layout {
+    .sakura-post-card.article-list.is-col {
+      height: var(--sakura-post-card-height);
+      min-height: var(--sakura-post-card-height);
+      flex-direction: row !important;
+
+      &.left {
+        flex-direction: row-reverse !important;
+      }
+
+      &.right {
+        text-align: right;
+      }
+
+      .post-card-content {
+        padding: 20px 39px;
+
+        &.has-cover {
+          width: calc(100% - var(--sakura-post-card-img-width));
+        }
+      }
+
+      .sakura-image-card {
+        width: var(--sakura-post-card-img-width);
+      }
+    }
+  }
+}
+
 .has-page-layout,
 .has-undefined-layout {
   .sakura-main {
