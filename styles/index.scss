@@ -330,3 +330,12 @@
     padding-left: 0;
   }
 }
+
+.markdown-body {
+  --va-header-anchor-symbol: '✦';
+
+  .header-anchor {
+    color: color-mix(in srgb, var(--sakura-color-primary) 82%, white);
+    text-shadow: 0 0 10px color-mix(in srgb, var(--sakura-color-primary) 60%, transparent);
+  }
+}
