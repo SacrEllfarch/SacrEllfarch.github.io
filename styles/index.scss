@@ -25,14 +25,10 @@
 }
 
 .sakura-glitch-text {
-  position: relative;
-  display: inline-block;
-  isolation: isolate;
   color: #fff;
   transition:
     filter 0.3s ease,
-    text-shadow 0.3s ease,
-    transform 0.3s ease;
+    text-shadow 0.3s ease;
 
   &::before {
     content: none !important;
@@ -40,58 +36,59 @@
   }
 
   &::after {
-    content: '';
+    content: attr(data-text);
     position: absolute;
-    inset: -0.3em -0.55em;
-    z-index: -1;
-    width: auto;
-    height: auto;
-    border-radius: 999px;
-    background:
-      radial-gradient(
-        ellipse at center,
-        rgb(174 216 232 / 34%) 0%,
-        rgb(112 156 181 / 22%) 42%,
-        transparent 72%
+    inset: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-image:
+      linear-gradient(
+        105deg,
+        #ffffff 0%,
+        #d9edf8 24%,
+        #86a8be 45%,
+        #f7fbff 55%,
+        #9fc4d8 72%,
+        #ffffff 100%
       );
+    background-position: 0% 50%;
+    background-size: 240% 100%;
+    background-clip: text;
     clip: auto;
-    filter: blur(12px);
+    color: transparent;
     opacity: 0;
     pointer-events: none;
     text-shadow: none;
-    transform: scale(0.86);
-    transition:
-      opacity 0.32s ease,
-      transform 0.32s ease;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: opacity 0.28s ease;
   }
 
   &:hover {
-    transform: translateY(-2px);
     filter:
-      brightness(1.14)
-      drop-shadow(0 0 12px rgb(174 216 232 / 46%));
+      brightness(1.16)
+      drop-shadow(0 0 16px rgb(134 168 190 / 62%))
+      drop-shadow(0 0 36px rgb(134 168 190 / 36%));
     text-shadow:
-      0 0 8px rgb(255 255 255 / 58%),
-      0 0 18px rgb(174 216 232 / 58%),
-      0 0 36px rgb(112 156 181 / 34%);
+      0 0 10px rgb(255 255 255 / 54%),
+      0 0 22px rgb(134 168 190 / 68%),
+      0 0 42px rgb(134 168 190 / 36%);
   }
 
   &:hover::after {
-    animation: sakura-title-breath 1.8s ease-in-out infinite alternate;
+    animation: sakura-hero-aurora 2.8s ease-in-out infinite alternate;
     opacity: 1;
-    transform: scale(1);
   }
 }
 
-@keyframes sakura-title-breath {
+@keyframes sakura-hero-aurora {
   from {
-    opacity: 0.62;
-    transform: scale(0.96);
+    background-position: 0% 50%;
   }
 
   to {
-    opacity: 1;
-    transform: scale(1.04);
+    background-position: 100% 50%;
   }
 }
 
@@ -103,9 +100,10 @@
     border-radius: 10px;
     isolation: isolate;
     transition:
-      color 0.28s ease,
-      filter 0.28s ease,
-      transform 0.28s ease;
+      color 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+      filter 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, filter;
 
     &::before,
     &::after {
@@ -116,21 +114,29 @@
     }
 
     &::before {
-      inset: -0.24rem -0.36rem;
+      inset: -0.2rem -0.32rem;
       z-index: -1;
-      border-radius: 999px;
+      border-radius: 10px;
       background:
-        radial-gradient(
-          ellipse at center,
-          rgb(174 216 232 / 22%) 0%,
-          rgb(112 156 181 / 15%) 44%,
-          transparent 74%
+        linear-gradient(
+          110deg,
+          transparent 0%,
+          transparent 25%,
+          rgb(158 241 255 / 0%) 34%,
+          rgb(158 241 255 / 28%) 45%,
+          rgb(255 255 255 / 44%) 50%,
+          rgb(120 183 255 / 24%) 56%,
+          rgb(120 183 255 / 0%) 66%,
+          transparent 100%
         );
-      filter: blur(9px);
-      transform: scale(0.88);
+      background-position: 120% 50%;
+      background-size: 260% 100%;
+      filter: blur(0.4px);
+      transform: skewX(-12deg);
       transition:
-        opacity 0.28s ease,
-        transform 0.28s ease;
+        background-position 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     &::after {
@@ -146,10 +152,10 @@
           rgb(255 255 255 / 94%),
           rgb(174 216 232 / 90%),
           transparent
-        );
+      );
       box-shadow:
-        0 0 7px rgb(174 216 232 / 62%),
-        0 0 14px rgb(112 156 181 / 30%);
+        0 0 7px rgb(205 235 245 / 56%),
+        0 0 14px rgb(134 190 216 / 26%);
       transform: scaleX(0);
       transform-origin: center;
       transition:
@@ -171,13 +177,16 @@
 
     &:hover {
       filter:
-        brightness(1.1)
-        drop-shadow(0 0 8px rgb(174 216 232 / 32%));
-      transform: translateY(-2px);
+        brightness(1.13)
+        drop-shadow(0 0 10px rgb(158 241 255 / 40%))
+        drop-shadow(0 5px 10px rgb(0 0 0 / 22%));
+      transform: translate3d(0, -3px, 0);
 
       &::before {
+        animation: sakura-navbar-neon-strip 1.35s ease-in-out infinite;
+        background-position: -120% 50%;
         opacity: 1;
-        transform: scale(1);
+        transform: skewX(-12deg);
       }
 
       &::after {
@@ -191,9 +200,9 @@
         background-color: transparent !important;
         color: #f7fbff !important;
         text-shadow:
-          0 0 6px rgb(255 255 255 / 56%),
-          0 0 14px rgb(174 216 232 / 58%),
-          0 0 26px rgb(112 156 181 / 30%);
+          0 0 7px rgb(255 255 255 / 58%),
+          0 0 16px rgb(158 241 255 / 64%),
+          0 0 30px rgb(120 183 255 / 34%);
       }
     }
   }
@@ -215,6 +224,34 @@
       text-align-last: center;
       transform: translate(-50%, 0.1em);
     }
+  }
+}
+
+@keyframes sakura-navbar-neon-strip {
+  0% {
+    background-position: 130% 50%;
+    opacity: 0;
+  }
+
+  18%,
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    background-position: -130% 50%;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sakura-glitch-text,
+  .sakura-navbar-brand .logo-link,
+  .sakura-navbar-brand .logo-link::before,
+  .sakura-navbar-brand .logo-link::after,
+  .sakura-glitch-text::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
