@@ -6,4 +6,4 @@ title: 关于我
 
 如果你喜欢它，你可以在 [GitHub](https://github.com/SacrEllfarch)关注我
 
-Check out the [Valaxy | GitHub](https://github.com/YunYouJun/valaxy) for more details.
+Check out the [Valaxy | GitHub](/about/site) for more details.

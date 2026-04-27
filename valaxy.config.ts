@@ -70,7 +70,7 @@ const heroConfig = {
     '/images/9.png',
   ],
   playerUrl: `${mediaBase}/videos/see.mp4`,
-  randomUrls: false,
+  randomUrls: true,
   style: 'scanline',
   typewriter: true,
   socials: [
