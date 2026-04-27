@@ -121,7 +121,7 @@ export default defineValaxyConfig<ThemeUserConfig>({
 
   themeConfig: {
     ui: {
-      primary: '#86a8be',
+      primary: '#459ad3',
     },
 
     navbar: [
@@ -158,7 +158,7 @@ export default defineValaxyConfig<ThemeUserConfig>({
     ],
     navbarOptions: {
       title: ['SacrEllfarch', 'Blog'],
-      subTitle: '把身心交予自由\n任其漂流',
+      subTitle: '',
       showMarker: false,
       autoHide: ['home'],
       invert: ['home'],
