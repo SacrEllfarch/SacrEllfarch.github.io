@@ -173,6 +173,14 @@ export default defineValaxyConfig<ThemeUserConfig>({
     base,
   },
 
+  modules: {
+    rss: {
+      enable: true,
+      fullText: false,
+      extractImagePathsFromHTML: true,
+    },
+  },
+
   unocss: {
     safelist,
   },

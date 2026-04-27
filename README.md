@@ -20,6 +20,14 @@ See `http://localhost:4859/`, have fun!
 
 Modify `valaxy.config.ts` to custom your blog.
 
+### RSS
+
+构建时会自动生成订阅文件：
+
+- RSS: `/feed.xml`
+- Atom: `/atom.xml`
+- JSON Feed: `/feed.json`
+
 English & Chinese Docs is coming!
 
 > Wait a minute.
