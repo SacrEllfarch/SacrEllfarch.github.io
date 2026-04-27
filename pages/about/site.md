@@ -1,7 +1,19 @@
 ---
-title: 关于站点
+title: 建站记录
 ---
 
-Valaxy + valaxy-theme-yun Demo Site
+这里记录 SacrEllfarch Blog 的搭建和调整过程。
 
-- Default Theme: [valaxy-theme-yun](https://github.com/YunYouJun/valaxy/blob/main/packages/valaxy-theme-yun/)
+## 起点
+
+这个站点基于 [Valaxy](https://github.com/YunYouJun/valaxy) 构建，主题使用 Sakura。最初只是想有一个安静的地方放文章、笔记和一些偶尔闪光的想法。
+
+## 调整
+
+- 修正首页文章卡片在首次进入时的布局表现。
+- 调整站点标题、导航栏和文章页头图上的视觉细节。
+- 去掉模板残留内容，让页面更贴近自己的博客。
+
+## 之后
+
+后续会继续慢慢打磨这里：补充文章分类、整理归档、优化阅读体验，也把一些折腾过程留作记录。
