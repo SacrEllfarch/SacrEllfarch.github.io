@@ -37,7 +37,7 @@ pnpm serve
 
 - Check `git status --short --branch` before editing.
 - Commit each meaningful local change so the user has a backup.
-- Push only when the user asks to push.
+- Push each local commit to `origin main` immediately after committing, unless the user explicitly asks not to push.
 - Never revert user changes unless explicitly requested.
 - Keep generated or environment-specific files out of commits.
 
