@@ -121,7 +121,7 @@ export default defineValaxyConfig<ThemeUserConfig>({
 
   themeConfig: {
     ui: {
-      primary: '#5297c5',
+      primary: '#86a8be',
     },
 
     navbar: [
