@@ -176,10 +176,70 @@
   }
 }
 
+.sakura-navbar-link {
+  .sakura-nav-link {
+    position: relative;
+    transition:
+      color 0.24s ease,
+      transform 0.24s ease,
+      text-shadow 0.24s ease;
+
+    .sakura-nav-link-icon,
+    .sakura-nav-link-text {
+      transition:
+        color 0.24s ease,
+        text-shadow 0.24s ease,
+        transform 0.24s ease;
+    }
+
+    &:hover {
+      transform: translateY(-1px);
+      text-shadow: 0 0 12px rgb(158 241 255 / 32%);
+
+      .sakura-nav-link-icon {
+        animation: sakura-nav-icon-bounce 0.62s cubic-bezier(0.2, 1.2, 0.32, 1);
+        color: #9ef1ff;
+        filter:
+          drop-shadow(0 0 5px rgb(158 241 255 / 58%))
+          drop-shadow(0 0 12px rgb(120 183 255 / 28%));
+      }
+
+      .sakura-nav-link-text {
+        transform: translateY(-1px);
+      }
+    }
+  }
+}
+
+@keyframes sakura-nav-icon-bounce {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+
+  38% {
+    transform: translateY(-5px) scale(1.16) rotate(-7deg);
+  }
+
+  62% {
+    transform: translateY(1px) scale(0.96) rotate(4deg);
+  }
+
+  82% {
+    transform: translateY(-2px) scale(1.06) rotate(-2deg);
+  }
+
+  100% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .sakura-navbar-brand .logo-link,
   .sakura-navbar-brand .logo-link::before,
-  .sakura-navbar-brand .logo-link::after {
+  .sakura-navbar-brand .logo-link::after,
+  .sakura-navbar-link .sakura-nav-link,
+  .sakura-navbar-link .sakura-nav-link-icon,
+  .sakura-navbar-link .sakura-nav-link-text {
     animation: none !important;
     transition-duration: 0.01ms !important;
   }
