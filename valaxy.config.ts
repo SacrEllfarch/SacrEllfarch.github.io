@@ -14,6 +14,9 @@ const safelist = [
   'i-ri-price-tag-3-line',
   'i-ri-links-line',
   'i-ri-user-smile-line',
+  'i-ph-sparkle-fill',
+  'i-ph-link-simple-bold',
+  'i-ph-asterisk-simple-bold',
 ]
 
 const mottoPool = [
