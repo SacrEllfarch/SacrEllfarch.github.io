@@ -9,6 +9,7 @@ const props = withDefaults(defineProps<{
 }>(), {})
 
 const visitedUrls = ref<number[]>([])
+const randomWallpaperIndex = ref(0)
 const playerVideo = ref<HTMLVideoElement>()
 
 const sakura = useSakuraAppStore()
@@ -17,20 +18,43 @@ const themeConfig = useThemeConfig()
 const urls = computed(() => props.urls || themeConfig.value.hero.urls || '')
 const hero = computed(() => themeConfig.value.hero)
 
+function getUrlsLength() {
+  return Array.isArray(urls.value) ? urls.value.length : Number(Boolean(urls.value))
+}
+
+function pickRandomWallpaperIndex() {
+  if (!Array.isArray(urls.value)) {
+    visitedUrls.value = []
+    randomWallpaperIndex.value = 0
+    return
+  }
+
+  const urlsLength = urls.value.length
+  if (!urlsLength) {
+    visitedUrls.value = []
+    randomWallpaperIndex.value = 0
+    return
+  }
+
+  if (visitedUrls.value.length >= urlsLength)
+    visitedUrls.value = []
+
+  const availableIndexes = urls.value
+    .map((_, index) => index)
+    .filter(index => !visitedUrls.value.includes(index))
+
+  const nextIndex = availableIndexes[Math.floor(Math.random() * availableIndexes.length)] ?? 0
+  randomWallpaperIndex.value = nextIndex
+  visitedUrls.value = [...visitedUrls.value, nextIndex]
+}
+
 const currentWallpaperUrl = computed(() => {
   if (typeof urls.value === 'string')
     return urls.value
 
-  if (hero.value.randomUrls) {
-    let randomIndex: number | null = null
+  if (hero.value.randomUrls)
+    return urls.value[randomWallpaperIndex.value]
 
-    do {
-      const urlsLength = hero.value.urls.length
-      randomIndex = Math.floor(Math.random() * urlsLength)
-    } while (visitedUrls.value.includes(randomIndex))
-
-    return urls.value[randomIndex]
-  }
   return urls.value[sakura.wallpaperIndex]
 })
 
@@ -52,19 +76,23 @@ function playPlayerVideo() {
   })
 }
 
-watch(() => sakura.wallpaperIndex, (newIndex, oldIndex) => {
-  const urlsLength = hero.value.urls.length
-  if (visitedUrls.value.length === urlsLength)
-    visitedUrls.value = []
-  visitedUrls.value.push(oldIndex)
-})
+watch(
+  () => [sakura.wallpaperIndex, urls.value, hero.value.randomUrls] as const,
+  () => {
+    if (hero.value.randomUrls)
+      pickRandomWallpaperIndex()
+    else
+      visitedUrls.value = []
+  },
+  { immediate: true },
+)
 
 watch(() => sakura.wallpaperIndex, () => {
-  if (sakura.wallpaperIndex >= urls.value.length)
+  if (sakura.wallpaperIndex >= getUrlsLength())
     sakura.wallpaperIndex = 0
 }, { immediate: true })
 
-watch(() => urls.value.length, (length) => {
+watch(() => getUrlsLength(), (length) => {
   sakura.wallpaperLength = length
 }, { immediate: true })
 
