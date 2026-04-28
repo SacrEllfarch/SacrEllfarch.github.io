@@ -40,6 +40,7 @@ function collectCategories(categories: Categories, parent = '', level = 0): Cate
 }
 
 const categoryItems = computed(() => collectCategories(props.categories))
+const maxTotal = computed(() => Math.max(...categoryItems.value.map(category => category.total), 1))
 
 function displayName(category: CategoryItem | CategoryList) {
   return category.name === 'Uncategorized' ? '未分类' : category.name
@@ -47,18 +48,43 @@ function displayName(category: CategoryItem | CategoryList) {
 </script>
 
 <template>
-  <div class="sakura-category-grid">
-    <RouterLink
-      v-for="category in categoryItems"
-      :key="category.path"
-      class="sakura-category-pill"
-      :class="{ active: currentCategory === category.path }"
-      :style="{ '--category-level': category.level }"
-      :to="{ path: '/categories/', query: { category: category.path } }"
-    >
-      <span class="i-ri-folder-2-line sakura-category-icon" />
-      <span class="sakura-category-name">{{ displayName(category) }}</span>
-      <span class="sakura-category-count">{{ category.total }}</span>
-    </RouterLink>
+  <div class="sakura-category-taxonomy">
+    <div class="sakura-category-visual" aria-label="分类分布图">
+      <RouterLink
+        v-for="category in categoryItems"
+        :key="`visual-${category.path}`"
+        class="sakura-category-lane"
+        :class="{ active: currentCategory === category.path }"
+        :style="{
+          '--category-level': category.level,
+          '--category-ratio': category.total / maxTotal,
+        }"
+        :to="{ path: '/categories/', query: { category: category.path } }"
+      >
+        <span class="sakura-category-lane-label">
+          <span class="i-ri-folder-chart-line" />
+          {{ displayName(category) }}
+        </span>
+        <span class="sakura-category-lane-meter">
+          <span />
+        </span>
+        <span class="sakura-category-lane-count">{{ category.total }}</span>
+      </RouterLink>
+    </div>
+
+    <div class="sakura-category-grid">
+      <RouterLink
+        v-for="category in categoryItems"
+        :key="category.path"
+        class="sakura-category-pill"
+        :class="{ active: currentCategory === category.path }"
+        :style="{ '--category-level': category.level }"
+        :to="{ path: '/categories/', query: { category: category.path } }"
+      >
+        <span class="i-ri-folder-2-line sakura-category-icon" />
+        <span class="sakura-category-name">{{ displayName(category) }}</span>
+        <span class="sakura-category-count">{{ category.total }}</span>
+      </RouterLink>
+    </div>
   </div>
 </template>
