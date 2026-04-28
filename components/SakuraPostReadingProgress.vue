@@ -40,9 +40,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <Teleport to="body">
-    <div class="sakura-post-reading-progress" aria-hidden="true">
-      <div class="sakura-post-reading-progress-bar" :style="{ transform: `scaleX(${progress})` }" />
-    </div>
-  </Teleport>
+  <div class="sakura-post-reading-progress" aria-hidden="true">
+    <div class="sakura-post-reading-progress-bar" :style="{ transform: `scaleX(${progress})` }" />
+  </div>
 </template>
