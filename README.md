@@ -50,6 +50,12 @@ verification.md
 
 模板和说明见 [docs/sdd/README.md](docs/sdd/README.md)。
 
+### BDD
+
+用户可感知的交互和验收行为使用 BDD（Behavior-Driven Development，行为驱动开发）记录。BDD 文档放在 `docs/bdd/<feature-slug>/`，用于把 PRD/SDD 中的目标转成可验收场景。
+
+模板和说明见 [docs/bdd/README.md](docs/bdd/README.md)。
+
 ## Structure
 
 日常写作主要在 `pages/posts` 中完成。视觉和交互维护主要集中在 `components` 与 `styles/index.scss`。
@@ -67,5 +73,6 @@ verification.md
 
 - `AGENTS.md`: 后续维护代理和协作者的项目规则。
 - `docs/sdd`: SDD 流程和模板。
+- `docs/bdd`: BDD 场景和验收追踪模板。
 - `public`: 静态资源。
 - `patches`: pnpm patch。

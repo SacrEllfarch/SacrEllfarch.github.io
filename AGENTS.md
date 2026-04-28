@@ -23,6 +23,7 @@
 - `public/`：静态资源，如图片、头像、favicon、视频等。
 - `patches/`：pnpm patch 文件。
 - `docs/sdd/`：后续开发和维护使用的 SDD 文档结构与模板。
+- `docs/bdd/`：面向验收行为的 BDD 文档结构、场景模板和追踪矩阵。
 
 ## 常用命令
 
@@ -129,6 +130,27 @@ docs/sdd/<feature-slug>/
 4. `verification.md`：记录构建、预览、浏览器验证、已知 warning 和残余风险。
 
 对于小修复可以使用精简 SDD：在 `verification.md` 或提交信息中保留“问题 -> 原因 -> 修改 -> 验证”的闭环。
+
+## BDD 验收结构
+
+复杂功能或用户可感知行为需要补充 BDD（Behavior-Driven Development，行为驱动开发）文档，文档放在 `docs/bdd/<feature-slug>/`。
+
+推荐结构：
+
+```text
+docs/bdd/<feature-slug>/
+├── feature.md
+├── scenarios.feature
+└── traceability.md
+```
+
+使用规则：
+
+1. BDD 必须从 PRD 的用户目标/验收标准，或 SDD 的 `requirements.md` 中派生。
+2. `feature.md` 用中文说明用户故事、业务规则和验收范围。
+3. `scenarios.feature` 使用 Gherkin 风格，优先写用户能观察到的行为。
+4. `traceability.md` 建立 PRD/SDD/BBD 场景/验证记录之间的追踪关系。
+5. 本项目目前没有自动化 BDD 测试框架，BDD 先作为验收文档和手动浏览器验证依据；后续如引入 Playwright，可直接复用场景。
 
 ## 编辑原则
 

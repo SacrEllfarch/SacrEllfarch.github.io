@@ -90,3 +90,16 @@ docs/sdd/category-tag-visualization/
 - 视觉变化记录在 `styles/index.scss`。
 - 文章内容变化记录在 `pages/posts/`。
 - RSS、浏览量、目录、阅读进度条这类跨组件行为，需要在 `verification.md` 中写明浏览器验证过程。
+
+## 与 BDD 的衔接
+
+当一个需求包含用户可观察行为时，需要从 SDD 的 `requirements.md` 与 `verification.md` 派生 BDD 场景。
+
+推荐映射：
+
+- `requirements.md` 的用户目标 -> BDD 的 Feature/User Story
+- `requirements.md` 的验收标准 -> BDD 的 Scenario
+- `design.md` 的交互流程 -> BDD 的 Given/When/Then
+- `verification.md` 的浏览器验证点 -> BDD 的 Traceability
+
+BDD 文档模板位于 `docs/bdd/template/`。
