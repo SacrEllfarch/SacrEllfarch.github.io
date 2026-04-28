@@ -1,24 +1,31 @@
-# create-valaxy
+# SacrEllfarch Blog
 
-Example: [valaxy.site](https://valaxy.site)
+这是 SacrEllfarch Blog 的源码仓库，基于 Valaxy + Sakura 主题构建，并部署到 GitHub Pages。
 
 ## Usage
 
 ```bash
-# install
-npm i
-# or pnpm i
+# 安装依赖
+pnpm i
 
-# start
-npm run dev
-# or pnpm dev
+# 本地开发
+pnpm dev
+
+# SSG 构建
+pnpm build
+
+# 预览构建产物
+pnpm serve
 ```
 
-See `http://localhost:4859/`, have fun!
+`pnpm build` 会执行 `valaxy build --ssg`。构建中出现 Sakura 主题 optional addon 的 warning 时，若退出码为 0，一般不视为失败。
 
 ### Config
 
-Modify `valaxy.config.ts` to custom your blog.
+- `valaxy.config.ts`：主题、插件、RSS、首页 hero、导航和 UnoCSS safelist。
+- `site.config.ts`：站点元数据、作者、社交链接、统计和搜索。
+- `styles/index.scss`：站点级样式覆盖。
+- `components/`：本地覆盖 Sakura 主题组件。
 
 ### RSS
 
@@ -28,32 +35,37 @@ Modify `valaxy.config.ts` to custom your blog.
 - Atom: `/atom.xml`
 - JSON Feed: `/feed.json`
 
-English & Chinese Docs is coming!
+这些文件属于生成物，不应手动提交。
 
-> Wait a minute.
+### SDD
 
-### Docker
+后续功能开发使用 SDD（Spec-Driven Development，规格驱动开发）结构。新需求建议在 `docs/sdd/<feature-slug>/` 下维护：
 
-```bash
-docker build . -t your-valaxy-blog-name:latest
+```text
+requirements.md
+design.md
+tasks.md
+verification.md
 ```
+
+模板和说明见 [docs/sdd/README.md](docs/sdd/README.md)。
 
 ## Structure
 
-In most cases, you only need to work in the `pages` folder.
+日常写作主要在 `pages/posts` 中完成。视觉和交互维护主要集中在 `components` 与 `styles/index.scss`。
 
 ### Main folders
 
-- `pages`: your all pages
-  - `posts`: write your posts here, will be counted as posts
-- `styles`: override theme styles, `index.scss`/`vars.csss`/`index.css` will be loaded automatically
-- `components`: custom your vue components (will be loaded automatically)
-- `layouts`: custom layouts (use it by `layout: xxx` in md)
-- `locales`: custom i18n
+- `pages`: 页面和文章
+  - `posts`: 博客文章
+- `styles`: 主题样式覆盖
+- `components`: 自动注册的 Vue 组件和 Sakura 本地覆盖
+- `layouts`: 自定义布局
+- `locales`: 自定义 i18n
 
 ### Other
 
-- `.vscode`: recommend some useful plugins & settings, you can preview icon/i18n/class...
-- `.github`: GitHub Actions to auto build & deploy to GitHub Pages
-- `netlify.toml`: for [netlify](https://www.netlify.com/)
-- `vercel.json`: for [vercel](https://vercel.com/)
+- `AGENTS.md`: 后续维护代理和协作者的项目规则。
+- `docs/sdd`: SDD 流程和模板。
+- `public`: 静态资源。
+- `patches`: pnpm patch。

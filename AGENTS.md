@@ -1,47 +1,60 @@
 # AGENTS.md
 
-This repository is the source for SacrEllfarch Blog, a Valaxy static blog using the Sakura theme.
+本仓库是 SacrEllfarch Blog 的源码，技术栈为 Valaxy 静态博客框架 + Sakura 主题。后续开发以中文沟通和中文文档为准，优先遵循本文件约定。
 
-## Project Shape
+## 项目概览
 
-- `valaxy.config.ts` controls the Valaxy theme, Sakura hero, navbar, colors, and global UI behavior.
-- `site.config.ts` controls site metadata such as URL, favicon, author, description, social links, search, and sponsor settings.
-- `pages/` contains Markdown pages and posts.
-- `pages/posts/` contains blog posts.
-- `pages/about/index.md` is the main About page.
-- `pages/about/site.md` is the site-building log page.
-- `components/` contains local overrides for Sakura theme components.
-- `styles/index.scss` contains site-level visual polish and Sakura theme overrides.
-- `public/` contains static assets such as images, favicon, avatar, and videos.
-- `patches/` contains package patches used by pnpm.
+- 框架：`valaxy@0.28.5`
+- 主题：`valaxy-theme-sakura@0.10.2`
+- 包管理：`pnpm`
+- 主要语言：Vue SFC、TypeScript、SCSS、Markdown
+- 部署目标：GitHub Pages，站点地址为 `https://sacrellfarch.github.io/`
+- RSS：构建时生成 `/feed.xml`、`/atom.xml`、`/feed.json`
+- 访问统计：`valaxy-addon-vercount@0.0.7`，在 `valaxy.config.ts` 中显式配置 `api: 'cn'` 和 `baseUrl`
 
-## Commands
+## 目录职责
 
-Run commands from the WSL repo path:
+- `valaxy.config.ts`：Valaxy、Sakura 主题、首页 hero、导航栏、插件、RSS、UnoCSS safelist 等全局行为。
+- `site.config.ts`：站点元数据、作者信息、社交链接、搜索、统计、赞助等站点级配置。
+- `pages/`：Markdown 页面和文章。
+- `pages/posts/`：博客文章，文章 frontmatter 中的 `date`、`updated`、`tags`、`categories` 会影响文章列表、RSS、分类和标签页。
+- `components/`：本地覆盖 Sakura 主题组件和站点自定义组件。
+- `styles/index.scss`：站点级视觉修正、Sakura 主题覆盖、响应式布局、文章页标题和目录视觉规则。
+- `public/`：静态资源，如图片、头像、favicon、视频等。
+- `patches/`：pnpm patch 文件。
+- `docs/sdd/`：后续开发和维护使用的 SDD 文档结构与模板。
+
+## 常用命令
+
+从 WSL 项目目录运行：
 
 ```bash
 cd /home/terchdox/git/Valaxy/thx
 ```
 
-Use pnpm:
+使用 pnpm：
 
 ```bash
 pnpm dev
 pnpm build
 pnpm serve
+pnpm rss
 ```
 
-`pnpm build` runs `valaxy build --ssg`. It currently emits known Valaxy/Sakura warnings about optional addon imports such as `useAddonWaline`, `useAddonAlgolia`, and `useTwikooWithOptions`; those warnings are pre-existing and are not by themselves a failed build.
+说明：
 
-## Git Workflow
+- `pnpm build` 实际执行 `valaxy build --ssg`。
+- 构建时可能出现 Sakura 主题已有的 optional addon warning，例如 `useAddonWaline`、`useAddonAlgolia`、`useTwikooWithOptions` 未定义；只要退出码为 0，这些 warning 不视为构建失败。
+- 视觉或交互改动应尽量用 `pnpm serve` 预览，并通过浏览器验证目标页面。
 
-- Check `git status --short --branch` before editing.
-- Commit each meaningful local change so the user has a backup.
-- Push each local commit to `origin main` immediately after committing, unless the user explicitly asks not to push.
-- Never revert user changes unless explicitly requested.
-- Keep generated or environment-specific files out of commits.
+## Git 工作流
 
-Useful commands:
+- 修改前先运行 `git status --short --branch`。
+- 每个有意义的变更单独提交，提交后立即 `git push origin main`，除非用户明确要求不推送。
+- 不要回滚用户已有改动；若工作树有无关改动，只提交本次任务相关文件。
+- 不提交生成物、环境文件或本地临时文件。
+
+常用命令：
 
 ```bash
 git status --short --branch
@@ -51,33 +64,76 @@ git commit -m "<message>"
 git push origin main
 ```
 
-## Files To Avoid Committing
-
-These should normally stay untracked or ignored:
+## 避免提交的文件
 
 - `node_modules/`
 - `dist/`
 - `.valaxy/`
-- generated feed/search files under `public/`, including `feed.xml`, `atom.xml`, `feed.json`, and `valaxy-fuse-list.json`
-- Windows metadata files ending in `:Zone.Identifier`
-- local env files such as `.env` and `.env.*`
-- local videos under `public/videos/*.mp4`
+- `public/feed.xml`
+- `public/atom.xml`
+- `public/feed.json`
+- `public/valaxy-fuse-list.json`
+- `*.Zone.Identifier`
+- `.env`、`.env.*`
+- `public/videos/*.mp4` 等本地大体积视频
 
-## Blog-Specific Notes
+## 已有本地覆盖组件
 
-- The homepage hero media pool lives in `valaxy.config.ts` under `heroConfig.urls`.
-- `heroConfig.randomUrls` controls whether the homepage randomly chooses a hero wallpaper/media on entry.
-- The navbar title is configured through `themeConfig.navbarOptions.title`.
-- The custom navbar brand hover effect lives in `styles/index.scss`; do not modify it unless asked.
-- The Sakura glitch title effect should follow the theme's original `SakuraGlitchText.vue` behavior unless the user asks for a different effect.
-- Homepage post-card layout fixes also live in `styles/index.scss`.
-- Article header readability tweaks live in `styles/index.scss` under `.sakura-post-header.has-cover`.
+这些组件是当前站点行为的重要组成，不要在未确认需求的情况下删除或恢复为主题默认实现：
 
-## Editing Guidance
+- `components/SakuraPost.vue`：文章详情页总布局，挂载作者卡、文章内容、目录和阅读进度条。
+- `components/SakuraPostHeaderMeta.vue`：文章头部元信息，显示发布时间、更新时间、字数、预计阅读时长、浏览量。
+- `components/SakuraPostAuthorAside.vue`：文章左侧作者卡，包含文章、标签、分类统计入口和社交链接。
+- `components/SakuraPostReadingProgress.vue`：文章顶部阅读进度条。当前通过 `ClientOnly + Teleport to="body"` 挂到 body，避免 SSR 水合问题，同时保证 fixed 层级可见。
+- `components/SakuraToc.vue`：文章目录外层卡片。
+- `components/SakuraOutline.vue`：文章目录滚动高亮与平滑滚动逻辑。注意它使用按钮触发滚动，绕开 Valaxy/Sakura 对同页 hash 链接的全局捕获。
+- `components/SakuraOutlineItem.vue`：目录列表项，负责层级、active 样式和按钮交互。
+- `components/SakuraSidebarLink.vue`：侧栏导航覆盖，修复主题 marker 空引用导致详情页刷新白屏的问题。
+- `components/SakuraCategories.vue`、`components/SakuraCategoriesLayout.vue`、`components/SakuraTagsLayout.vue`：分类、标签页展示和可视化。
+- `components/SakuraPostList.vue`：文章列表展示，包含封面兜底和布局修正。
 
-- Prefer small, scoped changes that follow the existing Valaxy/Sakura structure.
-- Use existing theme config before adding custom components.
-- For visual changes, test with the local preview when possible.
-- For Markdown-only documentation changes, a build is optional unless behavior or generated output is affected.
-- Preserve Chinese content and UTF-8 encoding.
-- Be careful with PowerShell/WSL mojibake in terminal output; inspect actual files rather than trusting garbled console text.
+## 文章页交互注意事项
+
+- 目录点击不能使用普通 `<a href="#id">` 作为主要交互，因为 Sakura 的 `ValaxyMain` 会在捕获阶段处理同页 hash 链接，导致瞬时跳转。
+- 目录滚动应保留 `SakuraOutline.vue` 中的自定义 `requestAnimationFrame` 动画，除非明确改为浏览器原生平滑滚动。
+- 进度条不要直接 SSR Teleport 到 body；需要使用 `ClientOnly` 包裹，否则可能重新引入水合白屏。
+- 文章标题的竖向指示线样式位于 `styles/index.scss` 的 `.sakura-post .markdown-body` 下，与目录指示线保持同一视觉语言。
+- 目录和文章标题不要出现横向滚动条；长标题应省略或换行，而不是撑开布局。
+
+## RSS 与统计
+
+- RSS 配置在 `valaxy.config.ts` 的 `modules.rss` 中。
+- 生成文件为构建产物，不应手动提交。
+- 浏览量由 `valaxy-addon-vercount` 提供。显示层读取的是 `page.value.pv`，不是 `page.pv`。
+- 如果 GitHub Pages 上浏览量异常，先检查浏览器控制台、Vercount 接口响应、`baseUrl` 与线上路径是否一致。
+
+## SDD 开发结构
+
+后续需求按 SDD（Spec-Driven Development，规格驱动开发）推进，文档放在 `docs/sdd/<feature-slug>/`。
+
+推荐结构：
+
+```text
+docs/sdd/<feature-slug>/
+├── requirements.md
+├── design.md
+├── tasks.md
+└── verification.md
+```
+
+执行顺序：
+
+1. `requirements.md`：写清用户目标、范围、验收标准和非目标。
+2. `design.md`：说明涉及文件、技术方案、取舍、兼容性和风险。
+3. `tasks.md`：拆成可执行任务，完成后更新状态。
+4. `verification.md`：记录构建、预览、浏览器验证、已知 warning 和残余风险。
+
+对于小修复可以使用精简 SDD：在 `verification.md` 或提交信息中保留“问题 -> 原因 -> 修改 -> 验证”的闭环。
+
+## 编辑原则
+
+- 优先使用现有 Valaxy/Sakura 配置和本地覆盖组件，不轻易引入新框架。
+- 视觉变更优先写在 `styles/index.scss`，组件私有结构样式可写在对应 SFC scoped style 中。
+- Markdown 文档和中文内容保持 UTF-8。
+- 终端可能出现 PowerShell/WSL 乱码，涉及中文时以实际文件内容为准。
+- 对用户已有文章内容保持谨慎，只在明确要求时修改。

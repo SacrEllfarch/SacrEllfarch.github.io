@@ -1,20 +1,18 @@
-# styles
+# Styles
 
-You can override styles here.
+本目录用于覆盖 Valaxy/Sakura 的站点级样式。当前主要维护文件是 `styles/index.scss`。
 
-## 示例
+## 维护重点
 
-- New file `index.ts` to import other style files.
+- 首页 hero、文章卡片、分类/标签页视觉修正。
+- 文章详情页标题竖向指示线、目录视觉语言、顶部阅读进度条。
+- 作者卡、社交图标 hover 动效。
+- Sakura 主题默认布局在本项目中的响应式修正。
 
-```ts
-import './vars.scss'
-```
+## 约束
 
-```scss
-// vars.scss
-:root {
-  --primary-color: #007bff;
-}
-```
-
-More info see <https://valaxy.site/guide/custom/styles>.
+- 优先使用主题变量，例如 `--sakura-color-primary`、`--sakura-color-text`。
+- 不要让文章目录、按钮或卡片出现横向滚动条。
+- 不要把页面整体改成单一色系；保持当前 Sakura 风格和蓝色主题配色。
+- 文章页标题、目录 marker、阅读进度条应保持同一视觉语言。
+- 样式改动后尽量使用 `pnpm serve` 做浏览器验证。
