@@ -43,6 +43,7 @@ const readingTime = computed(() => {
 
   return `${Math.ceil(value)} 分钟`
 })
+const pageViews = computed(() => page.value.pv ?? '-')
 
 const metaItems = computed(() => {
   const items = []
@@ -87,7 +88,7 @@ const metaItems = computed(() => {
     key: 'views',
     icon: 'i-ri-eye-line',
     label: '浏览量',
-    value: page.pv ?? 0,
+    value: pageViews.value,
   })
 
   return items

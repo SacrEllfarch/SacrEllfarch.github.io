@@ -1,4 +1,5 @@
 import { defineValaxyConfig } from 'valaxy'
+import { addonVercount } from 'valaxy-addon-vercount'
 import type { ThemeUserConfig } from 'valaxy-theme-sakura'
 
 const safelist = [
@@ -113,6 +114,14 @@ const heroConfig = {
 
 export default defineValaxyConfig<ThemeUserConfig>({
   theme: 'sakura',
+
+  addons: [
+    addonVercount({
+      api: 'cn',
+      baseUrl: 'https://sacrellfarch.github.io',
+      placeholder: '-',
+    }),
+  ],
 
   siteConfig: {
     title: '我的博客',
