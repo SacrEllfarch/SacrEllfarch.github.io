@@ -193,6 +193,17 @@
       transition-duration: 0.01ms !important;
     }
   }
+
+  .sakura-post-reading-progress,
+  .sakura-post .outline-link,
+  .links-of-author .links-of-author-item,
+  .links-of-author .links-of-author-item::before,
+  .links-of-author .links-of-author-item .icon,
+  .sakura-hero-info-overlay a,
+  .sakura-hero-info-overlay a::before,
+  .sakura-hero-info-overlay a .sakura-icon {
+    transition-duration: 0.01ms !important;
+  }
 }
 
 .sakura-post-header.has-cover {
@@ -238,6 +249,186 @@
 .dark .sakura-post-header.has-cover {
   .sakura-post-header-meta {
     background: rgb(10 14 20 / 58%);
+  }
+}
+
+.sakura-post-reading-progress.sakura-scroll-indicator {
+  height: 4px;
+  background:
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--sakura-color-primary) 72%, white),
+      var(--sakura-color-primary),
+      color-mix(in srgb, var(--sakura-color-primary) 56%, #79f2ff)
+    );
+  box-shadow:
+    0 0 10px color-mix(in srgb, var(--sakura-color-primary) 58%, transparent),
+    0 2px 8px rgb(36 80 120 / 18%);
+}
+
+.sakura-post {
+  .outline-marker {
+    border-radius: 999px;
+    box-shadow:
+      0 0 10px color-mix(in srgb, var(--sakura-color-primary) 54%, transparent),
+      0 0 0 3px color-mix(in srgb, var(--sakura-color-primary) 10%, transparent);
+  }
+
+  .outline-link {
+    border-radius: 7px;
+    padding-inline: 7px;
+    transition:
+      color 0.24s ease,
+      background-color 0.24s ease,
+      transform 0.24s ease;
+  }
+
+  .outline-link:hover,
+  .outline-link.active {
+    background: color-mix(in srgb, var(--sakura-color-primary) 11%, transparent);
+    color: var(--sakura-color-primary);
+    transform: translateX(2px);
+  }
+
+  .markdown-body {
+    :where(h2, h3, h4):not(:where(.not-prose, .not-prose *)) {
+      position: relative;
+      scroll-margin-top: calc(var(--sakura-navbar-height) + 18px);
+      letter-spacing: 0;
+    }
+
+    :where(h2, h3):not(:where(.not-prose, .not-prose *)) {
+      padding-bottom: 0.34em;
+      background:
+        linear-gradient(
+          90deg,
+          color-mix(in srgb, var(--sakura-color-primary) 42%, transparent),
+          transparent 58%
+        )
+        left bottom / 100% 1px no-repeat;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 0.46em;
+        height: 0.46em;
+        margin-right: 0.45em;
+        border: 1px solid color-mix(in srgb, var(--sakura-color-primary) 54%, white);
+        border-radius: 999px;
+        background: var(--sakura-color-primary);
+        box-shadow:
+          0 0 0 4px color-mix(in srgb, var(--sakura-color-primary) 12%, transparent),
+          0 0 16px color-mix(in srgb, var(--sakura-color-primary) 45%, transparent);
+        vertical-align: 0.1em;
+      }
+    }
+
+    :where(h4):not(:where(.not-prose, .not-prose *)) {
+      color: color-mix(in srgb, var(--sakura-color-primary) 76%, var(--sakura-color-text));
+    }
+
+    :where(h2, h3, h4):target {
+      color: var(--sakura-color-primary);
+      text-shadow: 0 0 14px color-mix(in srgb, var(--sakura-color-primary) 26%, transparent);
+    }
+  }
+}
+
+.links-of-author {
+  .links-of-author-item {
+    position: relative;
+    isolation: isolate;
+    overflow: visible;
+    border-radius: 999px;
+    transition:
+      color 0.26s ease,
+      filter 0.26s ease,
+      transform 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      z-index: -1;
+      border-radius: inherit;
+      background: currentColor;
+      opacity: 0;
+      filter: blur(10px);
+      pointer-events: none;
+      transform: scale(0.72);
+      transition:
+        opacity 0.26s ease,
+        transform 0.26s ease;
+    }
+
+    .icon {
+      transition:
+        filter 0.26s ease,
+        transform 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    &:hover {
+      filter: saturate(1.18) brightness(1.08);
+      transform: translateY(-3px);
+
+      &::before {
+        opacity: 0.18;
+        transform: scale(1);
+      }
+
+      .icon {
+        filter: drop-shadow(0 0 8px currentColor);
+        transform: rotate(-8deg) scale(1.14);
+      }
+    }
+  }
+}
+
+.sakura-hero-info-overlay {
+  a {
+    position: relative;
+    border-radius: 999px;
+    transition:
+      filter 0.26s ease,
+      transform 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -7px;
+      border-radius: inherit;
+      background: var(--sakura-color-icon, var(--sakura-color-primary));
+      opacity: 0;
+      filter: blur(12px);
+      pointer-events: none;
+      transform: scale(0.72);
+      transition:
+        opacity 0.26s ease,
+        transform 0.26s ease;
+    }
+
+    .sakura-icon {
+      position: relative;
+      z-index: 1;
+      transition:
+        filter 0.26s ease,
+        transform 0.26s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    &:hover {
+      filter: saturate(1.2) brightness(1.1);
+      transform: translateY(-3px);
+
+      &::before {
+        opacity: 0.22;
+        transform: scale(1);
+      }
+
+      .sakura-icon {
+        filter: drop-shadow(0 0 9px var(--sakura-color-icon, var(--sakura-color-primary)));
+        transform: rotate(-8deg) scale(1.14);
+      }
+    }
   }
 }
 

@@ -1,9 +1,44 @@
 <script lang="ts" setup>
-import { formatDate, useFrontmatter, useSiteConfig } from 'valaxy'
+import type { CategoryList } from 'valaxy'
+import { formatDate, useCategories, useFrontmatter, useSiteConfig, useSiteStore, useTags } from 'valaxy'
 import { computed } from 'vue'
 
 const siteConfig = useSiteConfig()
+const site = useSiteStore()
 const frontmatter = useFrontmatter()
+const allTags = useTags()
+const allCategories = useCategories()
+
+function countCategories(category: CategoryList) {
+  let count = 0
+
+  category.children.forEach((child) => {
+    if ('children' in child) {
+      count += 1
+      count += countCategories(child)
+    }
+  })
+
+  return count
+}
+
+const overviewLinks = computed(() => [
+  {
+    label: '文章',
+    value: site.postList.length,
+    to: '/archives/',
+  },
+  {
+    label: '标签',
+    value: allTags.value.size,
+    to: '/tags/',
+  },
+  {
+    label: '分类',
+    value: countCategories(allCategories.value),
+    to: '/categories/',
+  },
+])
 
 const publishedDate = computed(() => {
   if (!frontmatter.value.date)
@@ -54,6 +89,18 @@ const tags = computed(() => {
       </p>
 
       <SakuraSocialLinks class="sakura-post-author-social" />
+
+      <div class="sakura-post-author-overview" aria-label="站点统计">
+        <RouterLink
+          v-for="item in overviewLinks"
+          :key="item.label"
+          :to="item.to"
+          class="sakura-post-author-stat"
+        >
+          <strong>{{ item.value }}</strong>
+          <span>{{ item.label }}</span>
+        </RouterLink>
+      </div>
 
       <div class="sakura-post-author-meta">
         <div v-if="publishedDate" class="sakura-post-author-row">
@@ -173,6 +220,54 @@ const tags = computed(() => {
 
 .sakura-post-author-social {
   margin-block: 2px 4px;
+}
+
+.sakura-post-author-overview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--sakura-color-primary) 15%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--sakura-color-primary) 6%, transparent);
+}
+
+.sakura-post-author-stat {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  gap: 2px;
+  padding: 9px 4px;
+  color: var(--sakura-color-text);
+  text-decoration: none;
+  transition:
+    color 0.24s ease,
+    background-color 0.24s ease,
+    transform 0.24s ease;
+
+  &:not(:last-child) {
+    border-right: 1px solid color-mix(in srgb, var(--sakura-color-text) 10%, transparent);
+  }
+
+  strong {
+    color: color-mix(in srgb, var(--sakura-color-primary) 82%, var(--sakura-color-text));
+    font-size: 1rem;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+
+  span {
+    color: color-mix(in srgb, var(--sakura-color-text) 68%, transparent);
+    font-size: 0.72rem;
+    line-height: 1.2;
+  }
+
+  &:hover {
+    color: var(--sakura-color-primary);
+    background: color-mix(in srgb, var(--sakura-color-primary) 12%, transparent);
+    transform: translateY(-1px);
+  }
 }
 
 .sakura-post-author-meta {

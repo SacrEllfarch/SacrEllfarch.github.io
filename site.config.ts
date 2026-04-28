@@ -54,6 +54,16 @@ export default defineSiteConfig({
     enable: false,
   },
 
+  statistics: {
+    enable: true,
+    readTime: {
+      speed: {
+        cn: 300,
+        en: 160,
+      },
+    },
+  },
+
   sponsor: {
     enable: false,
   },
