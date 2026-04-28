@@ -52,6 +52,8 @@ useSchemaOrg(
 
     <template #content>
       <slot name="content">
+        <SakuraToc class="sakura-post-inline-toc" />
+
         <RouterView v-slot="{ Component }">
           <component :is="Component">
             <template #main-content-after>
@@ -69,7 +71,7 @@ useSchemaOrg(
     <template #right>
       <slot name="right">
         <SakuraAside>
-          <SakuraToc />
+          <SakuraToc class="sakura-post-aside-toc" />
         </SakuraAside>
       </slot>
     </template>

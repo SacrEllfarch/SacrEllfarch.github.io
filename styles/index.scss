@@ -330,6 +330,48 @@
   overflow-x: hidden;
 }
 
+.sakura-post-inline-toc {
+  display: none;
+  margin-bottom: 18px;
+  border: 1px solid color-mix(in srgb, var(--sakura-color-primary) 14%, transparent);
+  border-radius: 8px;
+  padding: 14px 16px;
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--sakura-color-primary) 8%, transparent),
+      transparent 58%
+    ),
+    color-mix(in srgb, var(--sakura-color-background) 94%, white);
+  box-shadow: 0 10px 24px rgb(30 55 78 / 7%);
+}
+
+.sakura-post-aside-toc {
+  display: block;
+}
+
+@media (max-width: 1399.98px) {
+  .sakura-post-inline-toc {
+    display: block;
+  }
+
+  .sakura-post-aside-toc {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1399.98px) {
+  .sakura-post {
+    .sakura-triple-columns {
+      grid-template-columns: 170px minmax(0, 800px) 0 !important;
+
+      > aside:last-child {
+        display: none;
+      }
+    }
+  }
+}
+
 .sakura-local-toc-title {
   margin: 0 0 0.65rem;
   font-family: serif;

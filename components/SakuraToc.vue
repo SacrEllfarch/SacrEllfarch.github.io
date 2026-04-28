@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { MenuItem } from 'valaxy'
-import { useFrontmatter } from 'valaxy'
+import { onContentUpdated, useFrontmatter } from 'valaxy'
 import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
@@ -17,6 +17,8 @@ const headers = ref<MenuItem[]>([])
 const activeHash = ref('')
 let frame = 0
 let scanTimer = 0
+let retryTimer = 0
+let retryCount = 0
 let observer: MutationObserver | undefined
 
 function onResize() {
@@ -24,8 +26,18 @@ function onResize() {
   requestUpdate()
 }
 
+function getPostContent() {
+  return document.querySelector('.sakura-post .sakura-page-content')
+    || document.querySelector('.sakura-post .markdown-body')
+}
+
 function getHeaderElements() {
-  return Array.from(document.querySelectorAll('.sakura-post .markdown-body :is(h2, h3, h4, h5, h6)[id]')) as HTMLElement[]
+  const content = getPostContent()
+  if (!content)
+    return []
+
+  return Array.from(content.querySelectorAll(':is(h2, h3, h4, h5, h6)[id]'))
+    .filter(element => !element.closest('.sakura-local-toc, .not-prose')) as HTMLElement[]
 }
 
 function getHeaderTitle(element: HTMLElement) {
@@ -72,6 +84,27 @@ function scanHeaders() {
 function scheduleScan(delay = 0) {
   window.clearTimeout(scanTimer)
   scanTimer = window.setTimeout(scanHeaders, delay)
+}
+
+function retryScan() {
+  window.clearTimeout(retryTimer)
+
+  if (headers.value.length || retryCount >= 20)
+    return
+
+  retryCount += 1
+  retryTimer = window.setTimeout(() => {
+    scanHeaders()
+    retryScan()
+  }, 160)
+}
+
+function scanAfterContentUpdated() {
+  nextTick(() => {
+    retryCount = 0
+    scanHeaders()
+    retryScan()
+  })
 }
 
 function updateActiveHash() {
@@ -124,19 +157,24 @@ function onTocClick(event: MouseEvent) {
 
 watch(() => route.fullPath, () => {
   nextTick(() => {
+    retryCount = 0
     scheduleScan(80)
     window.setTimeout(scanHeaders, 360)
+    window.setTimeout(retryScan, 520)
   })
 })
+
+onContentUpdated(scanAfterContentUpdated)
 
 onMounted(() => {
   nextTick(() => {
     scanHeaders()
+    retryScan()
     window.setTimeout(scanHeaders, 100)
     window.setTimeout(scanHeaders, 420)
     window.setTimeout(scanHeaders, 1000)
 
-    const content = document.querySelector('.sakura-post .sakura-page-content')
+    const content = getPostContent()
     if (content) {
       observer = new MutationObserver(() => scheduleScan(60))
       observer.observe(content, {
@@ -155,6 +193,7 @@ onBeforeUnmount(() => {
     window.cancelAnimationFrame(frame)
 
   window.clearTimeout(scanTimer)
+  window.clearTimeout(retryTimer)
   observer?.disconnect()
   window.removeEventListener('scroll', requestUpdate)
   window.removeEventListener('resize', onResize)
