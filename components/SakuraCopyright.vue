@@ -16,13 +16,12 @@ const year = new Date().getFullYear()
 const isThisYear = computed(() => year === footer.value.since)
 const footerIcon = computed(() => footer.value.icon!)
 const runningTime = ref('正在计算运行时间...')
+const runningStartTime = new Date('2026-04-26T00:00:00+08:00').getTime()
 
 let runningTimer: ReturnType<typeof window.setInterval> | undefined
 
 function formatRunningTime() {
-  const since = Number(footer.value.since) || year
-  const startTime = new Date(`${since}-01-01T00:00:00+08:00`).getTime()
-  const diffSeconds = Math.max(0, Math.floor((Date.now() - startTime) / 1000))
+  const diffSeconds = Math.max(0, Math.floor((Date.now() - runningStartTime) / 1000))
   const days = Math.floor(diffSeconds / 86400)
   const hours = Math.floor((diffSeconds % 86400) / 3600)
   const minutes = Math.floor((diffSeconds % 3600) / 60)
@@ -70,6 +69,13 @@ onBeforeUnmount(() => {
 
 <style lang="scss" scoped>
 .sakura-running-time {
+  color: color-mix(in srgb, var(--va-c-text-light) 88%, var(--sakura-color-primary));
+  font-family: var(--va-font-serif);
+  font-size: 0.88rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
   line-height: 1.8;
+  text-shadow: 0 0 12px color-mix(in srgb, var(--sakura-color-primary) 18%, transparent);
 }
 </style>
