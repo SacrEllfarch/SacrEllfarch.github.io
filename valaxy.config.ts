@@ -179,6 +179,9 @@ export default defineValaxyConfig<ThemeUserConfig>({
     // Sakura v0.10.2 still uses the legacy banner hook to merge custom hero config.
     banner: heroConfig,
     hero: heroConfig,
+    postFooter: {
+      navigationMerge: true,
+    },
   },
 
   vite: {
