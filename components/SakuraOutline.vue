@@ -2,7 +2,7 @@
 import { useOutline } from 'valaxy'
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 
-const { headers, handleClick } = useOutline()
+const { headers } = useOutline()
 
 const container = ref<HTMLElement | null>(null)
 const marker = ref<HTMLElement | null>(null)
@@ -85,13 +85,31 @@ function updateMarker() {
 }
 
 function onClick(event: MouseEvent) {
-  handleClick(event)
+  event.preventDefault()
 
   const link = (event.currentTarget as HTMLAnchorElement | null)?.dataset.link
-  if (link)
-    activeLink.value = link
+  if (!link)
+    return
+
+  const id = decodeURIComponent(link.replace(/^#/, ''))
+  const heading = document.getElementById(id)
+  if (!heading)
+    return
+
+  activeLink.value = link
+  heading.focus({ preventScroll: true })
+
+  const targetTop = heading.getBoundingClientRect().top + window.scrollY - 92
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  window.history.pushState(null, '', `${window.location.pathname}${window.location.search}${link}`)
+  window.scrollTo({
+    top: Math.max(targetTop, 0),
+    behavior: prefersReducedMotion ? 'auto' : 'smooth',
+  })
 
   nextTick(updateMarker)
+  window.setTimeout(requestUpdate, prefersReducedMotion ? 0 : 360)
 }
 
 watch(headers, () => {

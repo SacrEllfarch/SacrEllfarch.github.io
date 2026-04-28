@@ -283,8 +283,26 @@
   .markdown-body {
     :where(h2, h3, h4):not(:where(.not-prose, .not-prose *)) {
       position: relative;
+      padding-left: 0.9em;
       scroll-margin-top: calc(var(--sakura-navbar-height) + 18px);
       letter-spacing: 0;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0.18em;
+        bottom: 0.18em;
+        left: 0;
+        width: 4px;
+        border-radius: 999px;
+        background:
+          linear-gradient(
+            180deg,
+            color-mix(in srgb, var(--sakura-color-primary) 72%, white),
+            var(--sakura-color-primary)
+          );
+        box-shadow: 0 0 12px color-mix(in srgb, var(--sakura-color-primary) 42%, transparent);
+      }
     }
 
     :where(h2, h3):not(:where(.not-prose, .not-prose *)) {
@@ -296,25 +314,15 @@
           transparent 58%
         )
         left bottom / 100% 1px no-repeat;
-
-      &::before {
-        content: '';
-        display: inline-block;
-        width: 0.46em;
-        height: 0.46em;
-        margin-right: 0.45em;
-        border: 1px solid color-mix(in srgb, var(--sakura-color-primary) 54%, white);
-        border-radius: 999px;
-        background: var(--sakura-color-primary);
-        box-shadow:
-          0 0 0 4px color-mix(in srgb, var(--sakura-color-primary) 12%, transparent),
-          0 0 16px color-mix(in srgb, var(--sakura-color-primary) 45%, transparent);
-        vertical-align: 0.1em;
-      }
     }
 
     :where(h4):not(:where(.not-prose, .not-prose *)) {
       color: color-mix(in srgb, var(--sakura-color-primary) 76%, var(--sakura-color-text));
+
+      &::before {
+        width: 3px;
+        opacity: 0.78;
+      }
     }
 
     :where(h2, h3, h4):target {
@@ -1058,19 +1066,7 @@
 .markdown-body {
   .prose :where(h2):not(:where(.not-prose, .not-prose *))::after,
   .prose .serif h2::after {
-    content: '' !important;
-    display: inline-block;
-    width: 0.78em;
-    height: 0.78em;
-    margin-left: 0.36em;
-    padding-left: 0 !important;
-    background: color-mix(in srgb, var(--sakura-color-primary) 86%, white);
-    filter: drop-shadow(0 0 7px color-mix(in srgb, var(--sakura-color-primary) 72%, transparent));
-    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='black' d='m235.24 84.38l-28.06 23.68l8.56 35.39a13.34 13.34 0 0 1-5.09 13.91a13.54 13.54 0 0 1-15 .69L164 139l-31.65 19.06a13.51 13.51 0 0 1-15-.69a13.32 13.32 0 0 1-5.1-13.91l8.56-35.39l-28.05-23.69a13.39 13.39 0 0 1 7.66-23.58l36.94-2.92l14.21-33.66a13.51 13.51 0 0 1 24.86 0l14.21 33.66l36.94 2.92a13.39 13.39 0 0 1 7.66 23.58M88.11 111.89a8 8 0 0 0-11.32 0l-58.45 58.45a8 8 0 0 0 11.32 11.32l58.45-58.45a8 8 0 0 0 0-11.32m-.5 61.19l-53.27 53.26a8 8 0 0 0 11.32 11.32l53.26-53.27a8 8 0 0 0-11.31-11.31m73-1l-54.29 54.28a8 8 0 0 0 11.32 11.32l54.28-54.28a8 8 0 0 0-11.31-11.32'/%3E%3C/svg%3E") center / contain no-repeat;
-    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cpath fill='black' d='m235.24 84.38l-28.06 23.68l8.56 35.39a13.34 13.34 0 0 1-5.09 13.91a13.54 13.54 0 0 1-15 .69L164 139l-31.65 19.06a13.51 13.51 0 0 1-15-.69a13.32 13.32 0 0 1-5.1-13.91l8.56-35.39l-28.05-23.69a13.39 13.39 0 0 1 7.66-23.58l36.94-2.92l14.21-33.66a13.51 13.51 0 0 1 24.86 0l14.21 33.66l36.94 2.92a13.39 13.39 0 0 1 7.66 23.58M88.11 111.89a8 8 0 0 0-11.32 0l-58.45 58.45a8 8 0 0 0 11.32 11.32l58.45-58.45a8 8 0 0 0 0-11.32m-.5 61.19l-53.27 53.26a8 8 0 0 0 11.32 11.32l53.26-53.27a8 8 0 0 0-11.31-11.31m73-1l-54.29 54.28a8 8 0 0 0 11.32 11.32l54.28-54.28a8 8 0 0 0-11.31-11.32'/%3E%3C/svg%3E") center / contain no-repeat;
-    font-size: 0.86em;
-    position: static !important;
-    vertical-align: 0.02em;
+    content: none !important;
   }
 
   .header-anchor {

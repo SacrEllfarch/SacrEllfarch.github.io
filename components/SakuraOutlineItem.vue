@@ -21,8 +21,7 @@ const { locale } = useI18n()
       :class="`level-${level}`"
       :lang="lang || locale"
     >
-      <RouterLink
-        :to="link"
+      <a
         :href="link"
         :data-link="link"
         class="sakura-outline-link"
@@ -31,7 +30,7 @@ const { locale } = useI18n()
       >
         <span class="sakura-outline-dot" />
         <span class="sakura-outline-text">{{ title }}</span>
-      </RouterLink>
+      </a>
 
       <SakuraOutlineItem
         v-if="children?.length"
