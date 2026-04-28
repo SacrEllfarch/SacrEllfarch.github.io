@@ -40,6 +40,22 @@ function getTagStyle(index: number) {
     '--sakura-tag-bg': `${color}22`,
   }
 }
+
+function getOrbitStyle(index: number, count: number) {
+  const total = Math.max(hotTags.value.length, 1)
+  const angle = (Math.PI * 2 * index) / total - Math.PI / 2
+  const radiusX = 38
+  const radiusY = 30
+  const x = 50 + Math.cos(angle) * radiusX
+  const y = 50 + Math.sin(angle) * radiusY
+
+  return {
+    ...getTagStyle(index),
+    '--tag-x': `${x}%`,
+    '--tag-y': `${y}%`,
+    '--tag-scale': 0.9 + (count / maxCount.value) * 0.26,
+  }
+}
 </script>
 
 <template>
@@ -53,24 +69,22 @@ function getTagStyle(index: number) {
                 {{ t('counter.tags', tagEntries.length) }}
               </div>
 
-              <div class="sakura-tag-visual" aria-label="标签热度图">
+              <div class="sakura-tag-orbit" aria-label="标签星轨图">
+                <div class="sakura-tag-orbit-core">
+                  <span class="i-ri-price-tag-3-line" />
+                  <strong>{{ tagEntries.length }}</strong>
+                </div>
                 <button
                   v-for="([key, tag], index) in hotTags"
                   :key="`visual-${key}`"
                   type="button"
-                  class="sakura-tag-tile"
+                  class="sakura-tag-node"
                   :class="{ active: curTag === key.toString() }"
-                  :style="{
-                    ...getTagStyle(index),
-                    '--tag-ratio': tag.count / maxCount,
-                  }"
+                  :style="getOrbitStyle(index, tag.count)"
                   @click="displayTag(key.toString())"
                 >
-                  <span class="sakura-tag-tile-name">#{{ key }}</span>
-                  <span class="sakura-tag-tile-meter">
-                    <span />
-                  </span>
-                  <span class="sakura-tag-tile-count">{{ tag.count }}</span>
+                  <span>#{{ key }}</span>
+                  <small>{{ tag.count }}</small>
                 </button>
               </div>
 
