@@ -343,6 +343,13 @@
   overflow-x: hidden;
 }
 
+.sakura-local-toc-empty {
+  margin: 0;
+  color: color-mix(in srgb, var(--sakura-color-text) 58%, transparent);
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
 .sakura-local-toc-list {
   display: grid;
   min-width: 0;

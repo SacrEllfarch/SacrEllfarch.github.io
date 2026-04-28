@@ -1,21 +1,77 @@
 <script lang="ts" setup>
-import { useFrontmatter, useOutline } from 'valaxy'
+import type { MenuItem } from 'valaxy'
+import { useFrontmatter } from 'valaxy'
 import { nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRoute } from 'vue-router'
 
 defineProps<{
   viewScroll?: boolean
 }>()
 
 const frontmatter = useFrontmatter()
-const { headers, handleClick } = useOutline()
+const route = useRoute()
 const { t } = useI18n()
 
+const headers = ref<MenuItem[]>([])
 const activeHash = ref('')
 let frame = 0
+let scanTimer = 0
+let observer: MutationObserver | undefined
+
+function onResize() {
+  scanHeaders()
+  requestUpdate()
+}
 
 function getHeaderElements() {
   return Array.from(document.querySelectorAll('.sakura-post .markdown-body :is(h2, h3, h4, h5, h6)[id]')) as HTMLElement[]
+}
+
+function getHeaderTitle(element: HTMLElement) {
+  return Array.from(element.childNodes)
+    .filter(node => !(node instanceof HTMLElement && node.classList.contains('header-anchor')))
+    .map(node => node.textContent || '')
+    .join('')
+    .replace(/\u200B/g, '')
+    .trim()
+}
+
+function scanHeaders() {
+  const elements = getHeaderElements()
+  const root: MenuItem[] = []
+  const stack: Array<{ level: number, item: MenuItem }> = []
+
+  elements.forEach((element) => {
+    const level = Number(element.tagName.slice(1))
+    const item: MenuItem = {
+      title: getHeaderTitle(element),
+      link: `#${element.id}`,
+      children: [],
+    }
+
+    while (stack.length && stack[stack.length - 1].level >= level)
+      stack.pop()
+
+    const parent = stack[stack.length - 1]?.item
+    if (parent)
+      parent.children ||= []
+
+    if (parent)
+      parent.children!.push(item)
+    else
+      root.push(item)
+
+    stack.push({ level, item })
+  })
+
+  headers.value = root
+  updateActiveHash()
+}
+
+function scheduleScan(delay = 0) {
+  window.clearTimeout(scanTimer)
+  scanTimer = window.setTimeout(scanHeaders, delay)
 }
 
 function updateActiveHash() {
@@ -56,37 +112,67 @@ function requestUpdate() {
 }
 
 function onTocClick(event: MouseEvent) {
-  handleClick(event)
+  const target = event.currentTarget as HTMLAnchorElement | null
+  const hash = target?.hash
+  if (hash) {
+    const heading = document.getElementById(decodeURIComponent(hash.slice(1)))
+    heading?.focus({ preventScroll: true })
+  }
+
   window.setTimeout(requestUpdate, 180)
 }
 
-watch(headers, () => {
-  nextTick(requestUpdate)
+watch(() => route.fullPath, () => {
+  nextTick(() => {
+    scheduleScan(80)
+    window.setTimeout(scanHeaders, 360)
+  })
 })
 
 onMounted(() => {
-  nextTick(updateActiveHash)
+  nextTick(() => {
+    scanHeaders()
+    window.setTimeout(scanHeaders, 100)
+    window.setTimeout(scanHeaders, 420)
+    window.setTimeout(scanHeaders, 1000)
+
+    const content = document.querySelector('.sakura-post .sakura-page-content')
+    if (content) {
+      observer = new MutationObserver(() => scheduleScan(60))
+      observer.observe(content, {
+        childList: true,
+        subtree: true,
+      })
+    }
+  })
+
   window.addEventListener('scroll', requestUpdate, { passive: true })
-  window.addEventListener('resize', requestUpdate)
+  window.addEventListener('resize', onResize)
 })
 
 onBeforeUnmount(() => {
   if (frame)
     window.cancelAnimationFrame(frame)
 
+  window.clearTimeout(scanTimer)
+  observer?.disconnect()
   window.removeEventListener('scroll', requestUpdate)
-  window.removeEventListener('resize', requestUpdate)
+  window.removeEventListener('resize', onResize)
 })
 </script>
 
 <template>
-  <section v-if="frontmatter.toc !== false && headers.length" class="sakura-local-toc">
+  <section v-if="frontmatter.toc !== false" class="sakura-local-toc">
     <h2 class="sakura-local-toc-title">
       {{ t('sidebar.toc') }}
     </h2>
 
-    <nav class="sakura-local-toc-body" aria-label="文章目录">
+    <nav v-if="headers.length" class="sakura-local-toc-body" aria-label="文章目录">
       <SakuraTocItems :headers="headers" :active-hash="activeHash" @navigate="onTocClick" />
     </nav>
+
+    <p v-else class="sakura-local-toc-empty">
+      正在生成目录...
+    </p>
   </section>
 </template>
