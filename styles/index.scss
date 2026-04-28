@@ -183,6 +183,16 @@
     animation: none !important;
     transition-duration: 0.01ms !important;
   }
+
+  .has-tags-layout {
+    .sakura-tag-orbit,
+    .sakura-tag-orbit::before,
+    .sakura-tag-orbit::after,
+    .sakura-tag-orbit-core,
+    .sakura-tag-node {
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
 .sakura-post-header.has-cover {
@@ -464,6 +474,7 @@
   .sakura-tag-orbit {
     position: relative;
     min-height: 260px;
+    interpolate-size: allow-keywords;
     margin-bottom: 20px;
     overflow: hidden;
     border: 1px solid color-mix(in srgb, var(--sakura-color-primary) 16%, var(--sakura-color-divider));
@@ -479,6 +490,15 @@
       100% 100%,
       100% 100%;
     box-shadow: 0 13px 34px rgb(32 64 96 / 9%);
+    contain: layout paint;
+    transition:
+      min-height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+      height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+      max-height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+      width 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.28s ease,
+      box-shadow 0.28s ease,
+      background-position 0.42s cubic-bezier(0.22, 1, 0.36, 1);
 
     &::before,
     &::after {
@@ -487,6 +507,10 @@
       border: 1px solid color-mix(in srgb, var(--sakura-color-primary) 13%, transparent);
       border-radius: 999px;
       pointer-events: none;
+      transition:
+        inset 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.28s ease,
+        opacity 0.28s ease;
     }
 
     &::before {
@@ -518,6 +542,13 @@
       0 0 0 8px color-mix(in srgb, var(--sakura-color-primary) 6%, transparent);
     color: color-mix(in srgb, var(--sakura-color-primary) 82%, var(--sakura-color-text));
     transform: translate(-50%, -50%);
+    transition:
+      width 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+      height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.28s ease,
+      box-shadow 0.28s ease,
+      color 0.28s ease,
+      transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
 
     span {
       width: 1.35rem;
@@ -540,6 +571,7 @@
     align-items: center;
     max-width: min(170px, 40vw);
     min-height: 38px;
+    interpolate-size: allow-keywords;
     border: 1px solid color-mix(in srgb, var(--sakura-tag-color, var(--sakura-color-primary)) 38%, transparent);
     border-radius: 999px;
     padding: 7px 10px 7px 12px;
@@ -553,9 +585,15 @@
     gap: 8px;
     transform: translate(-50%, -50%) scale(var(--tag-scale, 1));
     transition:
+      top 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+      left 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+      width 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+      max-width 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+      min-height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+      padding 0.32s ease,
       border-color 0.24s ease,
       box-shadow 0.24s ease,
-      transform 0.24s ease;
+      transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
 
     &:hover,
     &.active {
