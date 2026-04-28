@@ -28,7 +28,7 @@ tags:
 
 不知所措并且一筹莫展.（真的吗
 
-神了，用着notebooklm进行一个摘要总结然后manus的nano banana2跑了一份出来，用这个玩意的真的不会笑出声来吗，感觉我的脑细胞和审美神经在活动期间都要被懒死了
+神了，用着notebooklm进行一个摘要总结然后manus的nano banana2跑了一份PPT出来，用这个玩意的真的不会笑出声来吗，感觉我的脑细胞和审美神经在活动期间都要被懒死了
 <br>
 [查看 PDF 版](/trash/AI_codex.pdf) / [下载 PPTX](/trash/AI_codex.pptx)
 <br>
@@ -52,6 +52,7 @@ md文件里面好像是可以插入一堆乱七八糟的小玩意的，那么鬼
 <img src="/trash/dafei.jpg" alt="dafei" width="600">
 </center>
 
+感觉这样下去仓库很快就会堆满图片了
 
 周四，所以是早八日
 
