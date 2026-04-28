@@ -38,7 +38,7 @@ useSchemaOrg(
 
 <template>
   <SakuraPage class="sakura-post">
-    <SakuraScrollIndicator class="sakura-post-reading-progress" />
+    <SakuraPostReadingProgress />
 
     <template #header>
       <SakuraPostHeader :fm="frontmatter" />
@@ -69,7 +69,7 @@ useSchemaOrg(
     <template #right>
       <slot name="right">
         <SakuraAside>
-          <SakuraToc view-scroll />
+          <SakuraToc />
         </SakuraAside>
       </slot>
     </template>
