@@ -318,16 +318,174 @@
   }
 }
 
+.has-tags-layout,
+.has-categories-layout {
+  .sakura-page-content {
+    width: min(100%, 860px);
+  }
+
+  .sakura-text-light,
+  .yun-text-light {
+    margin-bottom: 12px;
+    color: color-mix(in srgb, var(--sakura-color-text) 68%, transparent);
+    font-size: 0.95rem;
+    letter-spacing: 0;
+  }
+
+  .sakura-divider {
+    margin-top: 34px;
+  }
+
+  .sakura-post-list {
+    margin-top: 8px;
+  }
+}
+
+.has-tags-layout {
+  .sakura-page-content [flex~='wrap'] {
+    align-items: center;
+    gap: 10px 12px;
+  }
+
+  .sakura-tag-button {
+    min-height: 36px;
+    border: 1px solid color-mix(in srgb, var(--sakura-tag-color, var(--sakura-color-primary)) 34%, transparent);
+    border-radius: 8px;
+    padding: 4px 13px;
+    background:
+      linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--sakura-tag-bg, var(--sakura-color-primary)) 84%, white 10%),
+        rgb(255 255 255 / 42%)
+      ) !important;
+    box-shadow: 0 8px 24px rgb(32 64 96 / 8%);
+    line-height: 1.4;
+    transform: translateY(0);
+    transition:
+      border-color 0.24s ease,
+      box-shadow 0.24s ease,
+      color 0.24s ease,
+      transform 0.24s ease;
+
+    &::before {
+      margin-right: 2px;
+      color: color-mix(in srgb, var(--sakura-tag-color, var(--sakura-color-primary)) 78%, var(--sakura-color-text));
+      font-weight: 700;
+    }
+
+    span:first-child {
+      font-weight: 600;
+    }
+
+    span:last-child {
+      margin-left: 2px;
+      color: color-mix(in srgb, var(--sakura-tag-color, var(--sakura-color-primary)) 70%, var(--sakura-color-text));
+      font-variant-numeric: tabular-nums;
+    }
+
+    &:hover,
+    &.clicked {
+      border-color: var(--sakura-tag-color, var(--sakura-color-primary));
+      box-shadow:
+        0 12px 28px rgb(32 64 96 / 12%),
+        0 0 0 3px color-mix(in srgb, var(--sakura-tag-color, var(--sakura-color-primary)) 14%, transparent);
+      transform: translateY(-2px);
+    }
+  }
+}
+
 .has-categories-layout {
   .sakura-page-content {
     text-align: center;
   }
 
-  .category-list {
-    display: flex;
-    justify-content: center;
-    margin-left: 0;
-    padding-left: 0;
+  .sakura-category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .sakura-category-pill {
+    --category-indent: calc(var(--category-level, 0) * 12px);
+
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    min-height: 48px;
+    border: 1px solid color-mix(in srgb, var(--sakura-color-primary) 22%, var(--sakura-color-divider));
+    border-radius: 8px;
+    padding: 8px 12px 8px calc(12px + var(--category-indent));
+    background:
+      linear-gradient(135deg, rgb(255 255 255 / 74%), rgb(248 252 255 / 56%)),
+      color-mix(in srgb, var(--sakura-color-primary) 5%, transparent);
+    box-shadow: 0 10px 30px rgb(44 76 108 / 8%);
+    color: var(--sakura-color-text);
+    text-align: left;
+    transition:
+      border-color 0.24s ease,
+      box-shadow 0.24s ease,
+      color 0.24s ease,
+      transform 0.24s ease;
+
+    &:hover,
+    &.active {
+      border-color: color-mix(in srgb, var(--sakura-color-primary) 72%, white);
+      box-shadow:
+        0 14px 32px rgb(44 76 108 / 13%),
+        0 0 0 3px color-mix(in srgb, var(--sakura-color-primary) 13%, transparent);
+      color: var(--sakura-color-primary);
+      transform: translateY(-2px);
+    }
+  }
+
+  .sakura-category-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-right: 8px;
+    color: color-mix(in srgb, var(--sakura-color-primary) 84%, var(--sakura-color-text));
+  }
+
+  .sakura-category-name {
+    overflow: hidden;
+    font-weight: 650;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .sakura-category-count {
+    min-width: 28px;
+    border-radius: 999px;
+    padding: 2px 8px;
+    background: color-mix(in srgb, var(--sakura-color-primary) 13%, transparent);
+    color: color-mix(in srgb, var(--sakura-color-primary) 88%, var(--sakura-color-text));
+    font-size: 0.78rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    text-align: center;
+  }
+}
+
+.dark {
+  .has-tags-layout {
+    .sakura-tag-button {
+      background:
+        linear-gradient(
+          135deg,
+          color-mix(in srgb, var(--sakura-tag-bg, var(--sakura-color-primary)) 42%, rgb(14 22 32)),
+          rgb(16 22 31 / 74%)
+        ) !important;
+      box-shadow: 0 10px 28px rgb(0 0 0 / 18%);
+    }
+  }
+
+  .has-categories-layout {
+    .sakura-category-pill {
+      background:
+        linear-gradient(135deg, rgb(18 25 35 / 82%), rgb(13 19 28 / 78%)),
+        color-mix(in srgb, var(--sakura-color-primary) 8%, transparent);
+      box-shadow: 0 10px 30px rgb(0 0 0 / 20%);
+    }
   }
 }
 
