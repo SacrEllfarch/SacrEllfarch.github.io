@@ -21,8 +21,8 @@ const { locale } = useI18n()
       :class="`level-${level}`"
       :lang="lang || locale"
     >
-      <a
-        :href="link"
+      <button
+        type="button"
         :data-link="link"
         class="sakura-outline-link"
         :class="{ active: activeLink === link }"
@@ -30,7 +30,7 @@ const { locale } = useI18n()
       >
         <span class="sakura-outline-dot" />
         <span class="sakura-outline-text">{{ title }}</span>
-      </a>
+      </button>
 
       <SakuraOutlineItem
         v-if="children?.length"
@@ -68,11 +68,17 @@ const { locale } = useI18n()
   width: 100%;
   min-width: 0;
   padding: 5px 7px 5px 3px;
+  border: 0;
   border-radius: 7px;
+  appearance: none;
+  background: transparent;
   color: color-mix(in srgb, var(--sakura-color-text) 72%, transparent);
   font-size: 0.82rem;
   line-height: 1.35;
+  font-family: inherit;
+  text-align: left;
   text-decoration: none;
+  cursor: pointer;
   transition:
     color 0.18s ease,
     background-color 0.18s ease,

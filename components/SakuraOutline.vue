@@ -8,6 +8,7 @@ const container = ref<HTMLElement | null>(null)
 const marker = ref<HTMLElement | null>(null)
 const activeLink = ref('')
 let frame = 0
+let scrollFrame = 0
 
 const hasHeaders = computed(() => headers.value.length > 0)
 
@@ -84,6 +85,36 @@ function updateMarker() {
   activeElement.scrollIntoView({ block: 'nearest' })
 }
 
+function easeOutCubic(value: number) {
+  return 1 - (1 - value) ** 3
+}
+
+function animateScrollTo(targetTop: number) {
+  if (scrollFrame)
+    window.cancelAnimationFrame(scrollFrame)
+
+  const startTop = window.scrollY
+  const distance = targetTop - startTop
+  const duration = Math.min(Math.max(Math.abs(distance) * 0.42, 360), 680)
+  const startedAt = performance.now()
+
+  function step(now: number) {
+    const elapsed = now - startedAt
+    const progress = Math.min(elapsed / duration, 1)
+    window.scrollTo(0, startTop + distance * easeOutCubic(progress))
+
+    if (progress < 1) {
+      scrollFrame = window.requestAnimationFrame(step)
+    }
+    else {
+      scrollFrame = 0
+      requestUpdate()
+    }
+  }
+
+  scrollFrame = window.requestAnimationFrame(step)
+}
+
 function onClick(event: MouseEvent) {
   event.preventDefault()
 
@@ -103,13 +134,16 @@ function onClick(event: MouseEvent) {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   window.history.pushState(null, '', `${window.location.pathname}${window.location.search}${link}`)
-  window.scrollTo({
-    top: Math.max(targetTop, 0),
-    behavior: prefersReducedMotion ? 'auto' : 'smooth',
-  })
+
+  if (prefersReducedMotion) {
+    window.scrollTo(0, Math.max(targetTop, 0))
+    requestUpdate()
+  }
+  else {
+    animateScrollTo(Math.max(targetTop, 0))
+  }
 
   nextTick(updateMarker)
-  window.setTimeout(requestUpdate, prefersReducedMotion ? 0 : 360)
 }
 
 watch(headers, () => {
@@ -127,6 +161,9 @@ onMounted(() => {
 onBeforeUnmount(() => {
   if (frame)
     window.cancelAnimationFrame(frame)
+
+  if (scrollFrame)
+    window.cancelAnimationFrame(scrollFrame)
 
   window.removeEventListener('scroll', requestUpdate)
   window.removeEventListener('resize', requestUpdate)
