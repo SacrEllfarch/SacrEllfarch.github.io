@@ -87,11 +87,11 @@ useSchemaOrg(
 
   .sakura-triple-columns {
     @include screen('md') {
-      grid-template-columns: 255px minmax(0, 800px) 150px !important;
+      grid-template-columns: 213px minmax(0, 800px) 150px !important;
     }
 
     @include screen('lg') {
-      grid-template-columns: 390px minmax(0, 800px) 250px !important;
+      grid-template-columns: 325px minmax(0, 800px) 250px !important;
     }
   }
 }

@@ -153,18 +153,18 @@ const tags = computed(() => {
 .sakura-post-author-aside {
   position: sticky;
   top: calc(var(--sakura-navbar-height) + 24px);
-  padding: 30px 18px 0;
+  padding: 30px 15px 0;
 }
 
 .sakura-post-author-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
+  gap: 15px;
   width: 100%;
-  max-width: 330px;
+  max-width: 275px;
   margin-inline: auto;
-  padding: 33px 27px;
+  padding: 28px 23px;
   border: 1px solid color-mix(in srgb, var(--sakura-color-primary) 18%, transparent);
   border-radius: 8px;
   background:
@@ -183,10 +183,10 @@ const tags = computed(() => {
 
 .sakura-post-author-avatar {
   display: block;
-  width: 129px;
-  height: 129px;
+  width: 108px;
+  height: 108px;
   border-radius: 50%;
-  padding: 5px;
+  padding: 4px;
   background: color-mix(in srgb, var(--sakura-color-primary) 30%, transparent);
 
   img {
@@ -200,7 +200,7 @@ const tags = computed(() => {
 
 .sakura-post-author-name {
   color: var(--sakura-color-text);
-  font-size: 1.58rem;
+  font-size: 1.31rem;
   font-weight: 700;
   line-height: 1.35;
   text-align: center;
@@ -209,7 +209,7 @@ const tags = computed(() => {
 .sakura-post-author-desc {
   margin: 0;
   color: var(--sakura-color-text);
-  font-size: 1.18rem;
+  font-size: 1.06rem;
   font-style: italic;
   font-weight: 300;
   line-height: 1.55;
@@ -222,9 +222,9 @@ const tags = computed(() => {
   margin-block: 3px 6px;
 
   :deep(.links-of-author-item) {
-    width: 2.35rem;
-    height: 2.35rem;
-    font-size: 1.25rem;
+    width: 1.95rem;
+    height: 1.95rem;
+    font-size: 1.05rem;
   }
 }
 
@@ -244,7 +244,7 @@ const tags = computed(() => {
   place-items: center;
   min-width: 0;
   gap: 3px;
-  padding: 14px 6px;
+  padding: 11px 5px;
   color: var(--sakura-color-text);
   text-decoration: none;
   transition:
@@ -258,14 +258,14 @@ const tags = computed(() => {
 
   strong {
     color: color-mix(in srgb, var(--sakura-color-primary) 82%, var(--sakura-color-text));
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-variant-numeric: tabular-nums;
     line-height: 1;
   }
 
   span {
     color: color-mix(in srgb, var(--sakura-color-text) 68%, transparent);
-    font-size: 1rem;
+    font-size: 0.9rem;
     line-height: 1.2;
   }
 
@@ -278,19 +278,19 @@ const tags = computed(() => {
 
 .sakura-post-author-meta {
   display: grid;
-  gap: 14px;
+  gap: 11px;
   width: 100%;
-  padding-top: 18px;
+  padding-top: 15px;
   border-top: 1px solid color-mix(in srgb, var(--sakura-color-text) 12%, transparent);
 }
 
 .sakura-post-author-row {
   display: grid;
-  grid-template-columns: 27px minmax(0, 1fr);
+  grid-template-columns: 23px minmax(0, 1fr);
   align-items: start;
-  gap: 12px;
+  gap: 10px;
   color: var(--sakura-color-text);
-  font-size: 1.14rem;
+  font-size: 1.03rem;
   line-height: 1.45;
   opacity: 0.82;
   overflow-wrap: anywhere;
@@ -299,7 +299,7 @@ const tags = computed(() => {
 .sakura-post-author-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 9px;
+  gap: 8px;
 }
 
 .sakura-post-author-link {
@@ -309,10 +309,10 @@ const tags = computed(() => {
   align-items: center;
   border: 1px solid color-mix(in srgb, var(--sakura-color-primary) 24%, transparent);
   border-radius: 999px;
-  padding: 5px 12px;
+  padding: 4px 10px;
   color: var(--sakura-color-text);
   background: color-mix(in srgb, var(--sakura-color-primary) 8%, transparent);
-  font-size: 1.08rem;
+  font-size: 0.98rem;
   line-height: 1.3;
   text-decoration: none;
   transition:
@@ -330,21 +330,21 @@ const tags = computed(() => {
 }
 
 .sakura-post-author-icon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
   margin-top: 3px;
   color: var(--sakura-color-primary);
 }
 
 @media (max-width: 1023px) {
   .sakura-post-author-card {
-    max-width: 270px;
-    padding-inline: 21px;
+    max-width: 225px;
+    padding-inline: 18px;
   }
 
   .sakura-post-author-avatar {
-    width: 108px;
-    height: 108px;
+    width: 90px;
+    height: 90px;
   }
 }
 </style>
