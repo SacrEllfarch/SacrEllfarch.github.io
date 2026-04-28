@@ -282,11 +282,22 @@
 
 .sakura-post {
   .markdown-body {
-    :where(h2, h3, h4):not(:where(.not-prose, .not-prose *)) {
-      position: relative;
-      padding-left: 0.9em;
+    :where(h2, h3, h4, h5, h6):not(:where(.not-prose, .not-prose *)) {
       scroll-margin-top: calc(var(--sakura-navbar-height) + 18px);
       letter-spacing: 0;
+    }
+
+    :where(h2):not(:where(.not-prose, .not-prose *)) {
+      position: relative;
+      padding-left: 0.9em;
+      padding-bottom: 0.34em;
+      background:
+        linear-gradient(
+          90deg,
+          color-mix(in srgb, var(--sakura-color-primary) 42%, transparent),
+          transparent 58%
+        )
+        left bottom / 100% 1px no-repeat;
 
       &::before {
         content: '';
@@ -306,27 +317,7 @@
       }
     }
 
-    :where(h2, h3):not(:where(.not-prose, .not-prose *)) {
-      padding-bottom: 0.34em;
-      background:
-        linear-gradient(
-          90deg,
-          color-mix(in srgb, var(--sakura-color-primary) 42%, transparent),
-          transparent 58%
-        )
-        left bottom / 100% 1px no-repeat;
-    }
-
-    :where(h4):not(:where(.not-prose, .not-prose *)) {
-      color: color-mix(in srgb, var(--sakura-color-primary) 76%, var(--sakura-color-text));
-
-      &::before {
-        width: 3px;
-        opacity: 0.78;
-      }
-    }
-
-    :where(h2, h3, h4):target {
+    :where(h2):target {
       color: var(--sakura-color-primary);
       text-shadow: 0 0 14px color-mix(in srgb, var(--sakura-color-primary) 26%, transparent);
     }
