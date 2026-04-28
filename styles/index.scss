@@ -473,6 +473,8 @@
 .has-tags-layout {
   .sakura-tag-orbit {
     position: relative;
+    width: 100%;
+    height: clamp(260px, 34vw, 330px);
     min-height: 260px;
     interpolate-size: allow-keywords;
     margin-bottom: 20px;
@@ -491,14 +493,72 @@
       100% 100%;
     box-shadow: 0 13px 34px rgb(32 64 96 / 9%);
     contain: layout paint;
+    opacity: 0;
     transition:
-      min-height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-      height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-      max-height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-      width 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.22s ease,
       border-color 0.28s ease,
       box-shadow 0.28s ease,
       background-position 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+
+    /*
+     * 初次进入标签页时，父级页面容器会经历一次路由挂载后的宽度稳定过程。
+     * 尺寸动画只在 is-ready 后启用，避免把临时小宽度展示给用户。
+     */
+    &.is-ready {
+      opacity: 1;
+      transition:
+        opacity 0.22s ease,
+        min-height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        max-height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        width 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.28s ease,
+        box-shadow 0.28s ease,
+        background-position 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    &.is-ready::before,
+    &.is-ready::after {
+      transition:
+        inset 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.28s ease,
+        opacity 0.28s ease;
+    }
+
+    &.is-ready .sakura-tag-orbit-core {
+      transition:
+        width 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.28s ease,
+        box-shadow 0.28s ease,
+        color 0.28s ease,
+        transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    &.is-ready .sakura-tag-node {
+      transition:
+        top 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        left 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        width 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        max-width 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        min-height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        padding 0.32s ease,
+        border-color 0.24s ease,
+        box-shadow 0.24s ease,
+        transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    @media (width <= 640px) {
+      height: 280px;
+    }
+
+    @media (width >= 1080px) {
+      height: 330px;
+    }
+
+    @supports not (height: clamp(260px, 34vw, 330px)) {
+      height: 300px;
+    }
 
     &::before,
     &::after {
@@ -507,10 +567,7 @@
       border: 1px solid color-mix(in srgb, var(--sakura-color-primary) 13%, transparent);
       border-radius: 999px;
       pointer-events: none;
-      transition:
-        inset 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-        border-color 0.28s ease,
-        opacity 0.28s ease;
+      transition: none;
     }
 
     &::before {
@@ -542,13 +599,7 @@
       0 0 0 8px color-mix(in srgb, var(--sakura-color-primary) 6%, transparent);
     color: color-mix(in srgb, var(--sakura-color-primary) 82%, var(--sakura-color-text));
     transform: translate(-50%, -50%);
-    transition:
-      width 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-      height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-      border-color 0.28s ease,
-      box-shadow 0.28s ease,
-      color 0.28s ease,
-      transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: none;
 
     span {
       width: 1.35rem;
@@ -584,16 +635,7 @@
     cursor: pointer;
     gap: 8px;
     transform: translate(-50%, -50%) scale(var(--tag-scale, 1));
-    transition:
-      top 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-      left 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-      width 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-      max-width 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-      min-height 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-      padding 0.32s ease,
-      border-color 0.24s ease,
-      box-shadow 0.24s ease,
-      transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: none;
 
     &:hover,
     &.active {

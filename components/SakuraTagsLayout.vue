@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useSiteStore, useTags } from 'valaxy'
-import { computed } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 
@@ -9,6 +9,22 @@ const router = useRouter()
 const site = useSiteStore()
 const tags = useTags()
 const { t } = useI18n()
+
+const orbitReady = ref(false)
+let orbitFrame = 0
+
+onMounted(() => {
+  orbitFrame = window.requestAnimationFrame(() => {
+    orbitFrame = window.requestAnimationFrame(() => {
+      orbitReady.value = true
+    })
+  })
+})
+
+onBeforeUnmount(() => {
+  if (orbitFrame)
+    window.cancelAnimationFrame(orbitFrame)
+})
 
 const curTag = computed(() => route.query.tag as string || '')
 const tagEntries = computed(() => Array.from(tags.value).sort(([a], [b]) => a.localeCompare(b)))
@@ -69,7 +85,7 @@ function getOrbitStyle(index: number, count: number) {
                 {{ t('counter.tags', tagEntries.length) }}
               </div>
 
-              <div class="sakura-tag-orbit" aria-label="标签星轨图">
+              <div class="sakura-tag-orbit" :class="{ 'is-ready': orbitReady }" aria-label="标签星轨图">
                 <div class="sakura-tag-orbit-core">
                   <span class="i-ri-price-tag-3-line" />
                   <strong>{{ tagEntries.length }}</strong>
