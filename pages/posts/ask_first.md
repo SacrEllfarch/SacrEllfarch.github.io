@@ -1,6 +1,6 @@
 ---
 time_warning: 15552000000
-title: 唐吉坷德式的冲锋
+title: 堂吉诃德式的冲锋
 date: '2026-04-28 04:17:00'
 cover: /images/elaina-cover.jpg
 image: /images/elaina-cover.jpg
