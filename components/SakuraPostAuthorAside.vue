@@ -153,18 +153,18 @@ const tags = computed(() => {
 .sakura-post-author-aside {
   position: sticky;
   top: calc(var(--sakura-navbar-height) + 24px);
-  padding: 24px 12px 0;
+  padding: 30px 18px 0;
 }
 
 .sakura-post-author-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 18px;
   width: 100%;
-  max-width: 220px;
+  max-width: 330px;
   margin-inline: auto;
-  padding: 22px 18px;
+  padding: 33px 27px;
   border: 1px solid color-mix(in srgb, var(--sakura-color-primary) 18%, transparent);
   border-radius: 8px;
   background:
@@ -183,10 +183,10 @@ const tags = computed(() => {
 
 .sakura-post-author-avatar {
   display: block;
-  width: 86px;
-  height: 86px;
+  width: 129px;
+  height: 129px;
   border-radius: 50%;
-  padding: 3px;
+  padding: 5px;
   background: color-mix(in srgb, var(--sakura-color-primary) 30%, transparent);
 
   img {
@@ -200,7 +200,7 @@ const tags = computed(() => {
 
 .sakura-post-author-name {
   color: var(--sakura-color-text);
-  font-size: 1.05rem;
+  font-size: 1.58rem;
   font-weight: 700;
   line-height: 1.35;
   text-align: center;
@@ -209,7 +209,7 @@ const tags = computed(() => {
 .sakura-post-author-desc {
   margin: 0;
   color: var(--sakura-color-text);
-  font-size: 0.85rem;
+  font-size: 1.18rem;
   font-style: italic;
   font-weight: 300;
   line-height: 1.55;
@@ -219,7 +219,13 @@ const tags = computed(() => {
 }
 
 .sakura-post-author-social {
-  margin-block: 2px 4px;
+  margin-block: 3px 6px;
+
+  :deep(.links-of-author-item) {
+    width: 2.35rem;
+    height: 2.35rem;
+    font-size: 1.25rem;
+  }
 }
 
 .sakura-post-author-overview {
@@ -237,8 +243,8 @@ const tags = computed(() => {
   display: grid;
   place-items: center;
   min-width: 0;
-  gap: 2px;
-  padding: 9px 4px;
+  gap: 3px;
+  padding: 14px 6px;
   color: var(--sakura-color-text);
   text-decoration: none;
   transition:
@@ -252,14 +258,14 @@ const tags = computed(() => {
 
   strong {
     color: color-mix(in srgb, var(--sakura-color-primary) 82%, var(--sakura-color-text));
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-variant-numeric: tabular-nums;
     line-height: 1;
   }
 
   span {
     color: color-mix(in srgb, var(--sakura-color-text) 68%, transparent);
-    font-size: 0.72rem;
+    font-size: 1rem;
     line-height: 1.2;
   }
 
@@ -272,19 +278,19 @@ const tags = computed(() => {
 
 .sakura-post-author-meta {
   display: grid;
-  gap: 9px;
+  gap: 14px;
   width: 100%;
-  padding-top: 12px;
+  padding-top: 18px;
   border-top: 1px solid color-mix(in srgb, var(--sakura-color-text) 12%, transparent);
 }
 
 .sakura-post-author-row {
   display: grid;
-  grid-template-columns: 18px minmax(0, 1fr);
+  grid-template-columns: 27px minmax(0, 1fr);
   align-items: start;
-  gap: 8px;
+  gap: 12px;
   color: var(--sakura-color-text);
-  font-size: 0.82rem;
+  font-size: 1.14rem;
   line-height: 1.45;
   opacity: 0.82;
   overflow-wrap: anywhere;
@@ -293,7 +299,7 @@ const tags = computed(() => {
 .sakura-post-author-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 9px;
 }
 
 .sakura-post-author-link {
@@ -303,10 +309,10 @@ const tags = computed(() => {
   align-items: center;
   border: 1px solid color-mix(in srgb, var(--sakura-color-primary) 24%, transparent);
   border-radius: 999px;
-  padding: 3px 8px;
+  padding: 5px 12px;
   color: var(--sakura-color-text);
   background: color-mix(in srgb, var(--sakura-color-primary) 8%, transparent);
-  font-size: 0.78rem;
+  font-size: 1.08rem;
   line-height: 1.3;
   text-decoration: none;
   transition:
@@ -324,21 +330,21 @@ const tags = computed(() => {
 }
 
 .sakura-post-author-icon {
-  width: 1rem;
-  height: 1rem;
-  margin-top: 2px;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 3px;
   color: var(--sakura-color-primary);
 }
 
 @media (max-width: 1023px) {
   .sakura-post-author-card {
-    max-width: 180px;
-    padding-inline: 14px;
+    max-width: 270px;
+    padding-inline: 21px;
   }
 
   .sakura-post-author-avatar {
-    width: 72px;
-    height: 72px;
+    width: 108px;
+    height: 108px;
   }
 }
 </style>
