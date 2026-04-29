@@ -2,13 +2,14 @@
 import type { Categories, CategoryList } from 'valaxy'
 import { isCategoryList } from 'valaxy'
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 const props = defineProps<{
   categories: Categories
 }>()
 
 const route = useRoute()
+const router = useRouter()
 const currentCategory = computed(() => (route.query.category || '') as string)
 
 interface CategoryItem {
@@ -45,21 +46,29 @@ const maxTotal = computed(() => Math.max(...categoryItems.value.map(category => 
 function displayName(category: CategoryItem | CategoryList) {
   return category.name === 'Uncategorized' ? '未分类' : category.name
 }
+
+function displayCategory(category: CategoryItem) {
+  router.push({
+    path: '/categories/',
+    query: { category: category.path },
+  })
+}
 </script>
 
 <template>
   <div class="sakura-category-taxonomy">
     <div class="sakura-category-visual" aria-label="分类分布图">
-      <RouterLink
+      <button
         v-for="category in categoryItems"
         :key="`visual-${category.path}`"
+        type="button"
         class="sakura-category-lane"
         :class="{ active: currentCategory === category.path }"
         :style="{
           '--category-level': category.level,
           '--category-ratio': category.total / maxTotal,
         }"
-        :to="{ path: '/categories/', query: { category: category.path } }"
+        @click="displayCategory(category)"
       >
         <span class="sakura-category-lane-label">
           <span class="i-ri-folder-chart-line" />
@@ -69,22 +78,23 @@ function displayName(category: CategoryItem | CategoryList) {
           <span />
         </span>
         <span class="sakura-category-lane-count">{{ category.total }}</span>
-      </RouterLink>
+      </button>
     </div>
 
     <div class="sakura-category-grid">
-      <RouterLink
+      <button
         v-for="category in categoryItems"
         :key="category.path"
+        type="button"
         class="sakura-category-pill"
         :class="{ active: currentCategory === category.path }"
         :style="{ '--category-level': category.level }"
-        :to="{ path: '/categories/', query: { category: category.path } }"
+        @click="displayCategory(category)"
       >
         <span class="i-ri-folder-2-line sakura-category-icon" />
         <span class="sakura-category-name">{{ displayName(category) }}</span>
         <span class="sakura-category-count">{{ category.total }}</span>
-      </RouterLink>
+      </button>
     </div>
   </div>
 </template>

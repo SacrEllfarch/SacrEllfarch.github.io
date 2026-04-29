@@ -309,7 +309,7 @@ onBeforeUnmount(() => {
   scrollbar-width: thin;
 
   &::-webkit-scrollbar {
-    width: 4px;
+    width: 1px;
   }
 
   &::-webkit-scrollbar-track {
