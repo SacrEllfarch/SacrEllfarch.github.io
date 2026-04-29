@@ -9,6 +9,8 @@ const marker = ref<HTMLElement | null>(null)
 const activeLink = ref('')
 let frame = 0
 let scrollFrame = 0
+let outlineScrollFrame = 0
+let lastFollowedLink = ''
 
 const hasHeaders = computed(() => headers.value.length > 0)
 
@@ -72,21 +74,92 @@ function updateMarker() {
     return
   }
 
-  const activeElement = container.value.querySelector<HTMLAnchorElement>(`a[data-link="${CSS.escape(activeLink.value)}"]`)
+  const activeElement = container.value.querySelector<HTMLButtonElement>(`button[data-link="${CSS.escape(activeLink.value)}"]`)
 
   if (!activeElement) {
     marker.value.style.opacity = '0'
     return
   }
 
+  const containerRect = container.value.getBoundingClientRect()
+  const activeRect = activeElement.getBoundingClientRect()
+  const markerTop = activeRect.top - containerRect.top + container.value.scrollTop
+
   marker.value.style.opacity = '1'
-  marker.value.style.transform = `translateY(${activeElement.offsetTop}px)`
-  marker.value.style.height = `${activeElement.offsetHeight}px`
-  activeElement.scrollIntoView({ block: 'nearest' })
+  marker.value.style.transform = `translateY(${markerTop}px)`
+  marker.value.style.height = `${activeRect.height}px`
+
+  if (lastFollowedLink !== activeLink.value) {
+    lastFollowedLink = activeLink.value
+    followActiveElement(activeElement)
+  }
 }
 
 function easeOutCubic(value: number) {
   return 1 - (1 - value) ** 3
+}
+
+function easeOutQuint(value: number) {
+  return 1 - (1 - value) ** 5
+}
+
+function animateOutlineScrollTo(targetTop: number) {
+  const outline = container.value
+  if (!outline)
+    return
+
+  if (outlineScrollFrame)
+    window.cancelAnimationFrame(outlineScrollFrame)
+
+  const startTop = outline.scrollTop
+  const distance = targetTop - startTop
+  if (Math.abs(distance) < 2)
+    return
+
+  const duration = Math.min(Math.max(Math.abs(distance) * 0.55, 220), 460)
+  const startedAt = performance.now()
+
+  function step(now: number) {
+    const progress = Math.min((now - startedAt) / duration, 1)
+    outline.scrollTop = startTop + distance * easeOutQuint(progress)
+
+    if (progress < 1) {
+      outlineScrollFrame = window.requestAnimationFrame(step)
+    }
+    else {
+      outlineScrollFrame = 0
+    }
+  }
+
+  outlineScrollFrame = window.requestAnimationFrame(step)
+}
+
+function followActiveElement(activeElement: HTMLElement) {
+  const outline = container.value
+  if (!outline)
+    return
+
+  const containerRect = outline.getBoundingClientRect()
+  const activeRect = activeElement.getBoundingClientRect()
+  const activeTop = activeRect.top - containerRect.top + outline.scrollTop
+  const activeBottom = activeTop + activeRect.height
+  const comfortTop = outline.scrollTop + 40
+  const comfortBottom = outline.scrollTop + outline.clientHeight - 40
+
+  if (activeTop >= comfortTop && activeBottom <= comfortBottom)
+    return
+
+  const maxScrollTop = outline.scrollHeight - outline.clientHeight
+  const targetTop = Math.min(
+    Math.max(activeTop - (outline.clientHeight - activeRect.height) * 0.42, 0),
+    maxScrollTop,
+  )
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  if (prefersReducedMotion)
+    outline.scrollTop = targetTop
+  else
+    animateOutlineScrollTo(targetTop)
 }
 
 function animateScrollTo(targetTop: number) {
@@ -165,6 +238,9 @@ onBeforeUnmount(() => {
   if (scrollFrame)
     window.cancelAnimationFrame(scrollFrame)
 
+  if (outlineScrollFrame)
+    window.cancelAnimationFrame(outlineScrollFrame)
+
   window.removeEventListener('scroll', requestUpdate)
   window.removeEventListener('resize', requestUpdate)
 })
@@ -195,11 +271,29 @@ onBeforeUnmount(() => {
   max-height: min(62vh, 520px);
   overflow-x: hidden;
   overflow-y: auto;
-  padding-left: 12px;
-  scrollbar-width: none;
+  padding: 0 7px 0 12px;
+  scrollbar-color:
+    color-mix(in srgb, var(--sakura-color-primary) 42%, transparent)
+    color-mix(in srgb, var(--sakura-color-primary) 9%, transparent);
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
 
   &::-webkit-scrollbar {
-    display: none;
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--sakura-color-primary) 8%, transparent);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--sakura-color-primary) 38%, transparent);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--sakura-color-primary) 58%, transparent);
   }
 
   &::before {
@@ -225,10 +319,11 @@ onBeforeUnmount(() => {
   box-shadow: 0 0 12px color-mix(in srgb, var(--sakura-color-primary) 56%, transparent);
   opacity: 0;
   transition:
-    transform 0.22s ease,
-    height 0.22s ease,
+    transform 0.34s cubic-bezier(0.2, 0.9, 0.24, 1.18),
+    height 0.26s cubic-bezier(0.2, 0.9, 0.24, 1),
     opacity 0.18s ease,
     background-color 0.25s ease;
+  will-change: transform, height;
 }
 
 .visually-hidden {
