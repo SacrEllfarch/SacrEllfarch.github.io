@@ -229,7 +229,7 @@ function onClick(event: MouseEvent) {
   const targetTop = heading.getBoundingClientRect().top + window.scrollY - 92
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  window.history.pushState(null, '', `${window.location.pathname}${window.location.search}${link}`)
+  window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}${link}`)
 
   if (prefersReducedMotion) {
     window.scrollTo(0, Math.max(targetTop, 0))

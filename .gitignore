@@ -16,6 +16,8 @@ dist-ssr
 node_modules
 .idea/
 *.log
+*.Identifier
+*.Zone.Identifier
 
 components.d.ts
 .valaxy/
