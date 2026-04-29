@@ -6,7 +6,7 @@ updated: '2026-04-30 10:30:00'
 cover: /images/kaicy.jpg
 image: /images/kaicy.jpg
 categories:
-  - 学习记录
+  - 学习记录（AI稿）
 tags:
   - Flask
   - 笔记
