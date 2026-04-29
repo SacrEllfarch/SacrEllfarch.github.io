@@ -11,6 +11,7 @@ let frame = 0
 let scrollFrame = 0
 let outlineScrollFrame = 0
 let lastFollowedLink = ''
+let tocScrollTargetLink = ''
 
 const hasHeaders = computed(() => headers.value.length > 0)
 
@@ -47,6 +48,12 @@ function updateActiveLink() {
 
   if (!entries.length) {
     activeLink.value = ''
+    updateMarker()
+    return
+  }
+
+  if (tocScrollTargetLink) {
+    activeLink.value = tocScrollTargetLink
     updateMarker()
     return
   }
@@ -181,6 +188,7 @@ function animateScrollTo(targetTop: number) {
     }
     else {
       scrollFrame = 0
+      tocScrollTargetLink = ''
       requestUpdate()
     }
   }
@@ -188,10 +196,24 @@ function animateScrollTo(targetTop: number) {
   scrollFrame = window.requestAnimationFrame(step)
 }
 
+function cancelTocScrollTarget() {
+  if (!tocScrollTargetLink)
+    return
+
+  tocScrollTargetLink = ''
+
+  if (scrollFrame) {
+    window.cancelAnimationFrame(scrollFrame)
+    scrollFrame = 0
+  }
+
+  requestUpdate()
+}
+
 function onClick(event: MouseEvent) {
   event.preventDefault()
 
-  const link = (event.currentTarget as HTMLAnchorElement | null)?.dataset.link
+  const link = (event.currentTarget as HTMLButtonElement | null)?.dataset.link
   if (!link)
     return
 
@@ -201,6 +223,7 @@ function onClick(event: MouseEvent) {
     return
 
   activeLink.value = link
+  tocScrollTargetLink = link
   heading.focus({ preventScroll: true })
 
   const targetTop = heading.getBoundingClientRect().top + window.scrollY - 92
@@ -210,6 +233,7 @@ function onClick(event: MouseEvent) {
 
   if (prefersReducedMotion) {
     window.scrollTo(0, Math.max(targetTop, 0))
+    tocScrollTargetLink = ''
     requestUpdate()
   }
   else {
@@ -229,6 +253,9 @@ onMounted(() => {
   window.setTimeout(requestUpdate, 520)
   window.addEventListener('scroll', requestUpdate, { passive: true })
   window.addEventListener('resize', requestUpdate)
+  window.addEventListener('wheel', cancelTocScrollTarget, { passive: true })
+  window.addEventListener('touchstart', cancelTocScrollTarget, { passive: true })
+  window.addEventListener('keydown', cancelTocScrollTarget)
 })
 
 onBeforeUnmount(() => {
@@ -243,6 +270,9 @@ onBeforeUnmount(() => {
 
   window.removeEventListener('scroll', requestUpdate)
   window.removeEventListener('resize', requestUpdate)
+  window.removeEventListener('wheel', cancelTocScrollTarget)
+  window.removeEventListener('touchstart', cancelTocScrollTarget)
+  window.removeEventListener('keydown', cancelTocScrollTarget)
 })
 </script>
 
@@ -271,7 +301,7 @@ onBeforeUnmount(() => {
   max-height: min(62vh, 520px);
   overflow-x: hidden;
   overflow-y: auto;
-  padding: 0 7px 0 12px;
+  padding: 0 5px 0 12px;
   scrollbar-color:
     color-mix(in srgb, var(--sakura-color-primary) 42%, transparent)
     color-mix(in srgb, var(--sakura-color-primary) 9%, transparent);
@@ -279,7 +309,7 @@ onBeforeUnmount(() => {
   scrollbar-width: thin;
 
   &::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
   }
 
   &::-webkit-scrollbar-track {
