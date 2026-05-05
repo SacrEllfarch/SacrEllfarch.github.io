@@ -515,12 +515,8 @@
   }
 
   .link-avatar :is(.v-progressive-image-main, .v-progressive-image-placeholder) {
-    object-fit: contain;
-    object-position: center center;
-  }
-
-  .link-avatar .v-progressive-image-placeholder {
-    transform: none;
+    object-fit: cover;
+    object-position: 47% 34%;
   }
 }
 
