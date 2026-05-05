@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html  lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.png?v=terchdox-20260427">
+    <script>
+    ;(function () {
+      const prefersDark =
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+      const setting = localStorage.getItem('vueuse-color-scheme') || 'auto'
+      if (setting === 'dark' || (prefersDark && setting !== 'light'))
+        document.documentElement.classList.toggle('dark', true)
+    })()
+    </script>
+  <style type="text/css">
+    :root { color-scheme: light dark; --va-c-bg: #fff; }
+    html.dark { --va-c-bg: #000; }
+    html { background-color: var(--va-c-bg); }
+  </style><style id="valaxy-fouc">body{opacity:0!important}</style><style>body{transition:opacity .15s ease}</style><noscript><style>body{opacity:1!important}</style></noscript><script>(function foucGuardScript(maxDuration) {
+  var done = 0;
+  function reveal() {
+    if (done) return;
+    done = 1;
+    var s = document.getElementById("valaxy-fouc");
+    if (s) s.remove();
+  }
+  function check() {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+    for (var i = 0; i < links.length; i++) {
+      if (!links[i].sheet) return;
+    }
+    reveal();
+  }
+  new MutationObserver(check).observe(document.head, {
+    childList: true,
+    attributes: true,
+    attributeFilter: ["media", "rel"]
+  });
+  addEventListener("load", reveal);
+  if (maxDuration)
+    setTimeout(reveal, maxDuration);
+})(5000)</script>
+    <script>
+    const locale = localStorage.getItem('valaxy-locale') || 'zh-CN';
+    document.documentElement.setAttribute('lang', locale);
+    </script>
+    
+  <script type="module" crossorigin src="/assets/index.BItFF_fP.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/rolldown-runtime.CPPQDwIl.js">
+  <link rel="modulepreload" crossorigin href="/assets/framework.DfD1zdSt.js">
+  <link rel="modulepreload" crossorigin href="/assets/chunks/vue-i18n.7u3JGnY5.js">
+  <link rel="modulepreload" crossorigin href="/assets/chunks/dayjs.Do72Hm6d.js">
+  <link rel="modulepreload" crossorigin href="/assets/chunks/pinia.WKl7tTTL.js">
+  <link rel="modulepreload" crossorigin href="/assets/chunks/vue-router.BFdIAdCR.js">
+  <link rel="modulepreload" crossorigin href="/assets/theme.C2SLEY6T.js">
+  <link rel="modulepreload" crossorigin href="/assets/chunks/nprogress.gC8R_dE4.js">
+  <link rel="stylesheet" crossorigin href="/assets/style.Bj6oOsO5.css">
+<link rel="preload" href="/assets/KaTeX_AMS-Regular.BQhdFMY1.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/KaTeX_AMS-Regular.DMm9YOAa.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Caligraphic-Bold.Dq_IR9rO.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Caligraphic-Bold.BEiXGLvX.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Caligraphic-Regular.Di6jR-x-.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Caligraphic-Regular.CTRA-rTL.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Fraktur-Bold.CL6g_b3V.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Fraktur-Bold.BsDP51OF.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Fraktur-Regular.CTYiF6lA.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Fraktur-Regular.Dxdc4cR9.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Main-Bold.Cx986IdX.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Main-Bold.Jm3AIy58.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Main-BoldItalic.DxDJ3AOS.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Main-BoldItalic.SpSLRI95.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Main-Italic.NWA7e6Wa.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Main-Italic.BMLOBm91.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Main-Regular.B22Nviop.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Main-Regular.Dr94JaBh.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Math-BoldItalic.CZnvNsCZ.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Math-BoldItalic.iY-2wyZ7.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Math-Italic.t53AETM-.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Math-Italic.DA0__PXp.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/KaTeX_SansSerif-Bold.D1sUS0GD.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/KaTeX_SansSerif-Bold.DbIhKOiC.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/KaTeX_SansSerif-Italic.C3H0VqGB.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/KaTeX_SansSerif-Italic.DN2j7dab.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/KaTeX_SansSerif-Regular.DDBCnlJ7.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/KaTeX_SansSerif-Regular.CS6fqUqJ.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Script-Regular.D3wIWfF6.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Script-Regular.D5yQViql.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Size1-Regular.mCD8mA8B.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Size1-Regular.C195tn64.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Size2-Regular.Dy4dx90m.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Size2-Regular.oD1tc_U0.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Size3-Regular.CTq5MqoE.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Size4-Regular.Dl5lxZxV.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Size4-Regular.BF-4gkZK.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Typewriter-Regular.CO6r4hn1.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/KaTeX_Typewriter-Regular.C0xS9mPB.woff" as="font" type="font/woff" crossorigin>
+<link rel="modulepreload" crossorigin href="/assets/theme.C2SLEY6T.js">
+<link rel="preload" href="/assets/iloli.D82BDgdX.gif" as="image">
+<link rel="preload" href="/assets/wave1.D0L8GABh.png" as="image">
+<link rel="preload" href="/assets/wave2.CnerCPuy.png" as="image">
+<link rel="preload" href="/assets/comment-bg.CpQHGW7d.png" as="image">
+<link rel="modulepreload" crossorigin href="/assets/tags.tDLO1tlW.js">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>标签 - 我的博客</title>
+<meta property="og:locale:alternate" content="en">
+<meta name="description" content="把身心交予自由
+任其漂流">
+<meta property="og:description" content="把身心交予自由
+任其漂流">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:title" content="标签">
+<meta property="og:image" content="/favicon.png?v=terchdox-20260427">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sacrellfarch.github.io/">
+<link rel="icon" href="/favicon.png?v=terchdox-20260427" type="image/png">
+<meta name="generator" content="Valaxy 0.28.5">
+<meta name="theme-color" content="#fff">
+<meta name="msapplication-TileColor" content="#fff">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+  <div id="app"><!--[--><!--[--><div class="sakura-app-sidebar" data-v-5008cbc6><!----><aside class="left sakura-sidebar inset-y-0 overflow-y-auto transition" text="center" bg="contain no-repeat" data-v-5008cbc6><!--[--><div class="site-info flex flex-col items-center" data-v-5008cbc6><a href="/about" class="site-author-avatar"><img class="rounded-full" src="/avatar.jpg" alt="avatar"><span class="site-author-status" title="The moonlight is beautiful.">🌌</span></a><div class="site-author-name leading-6" m="t-0 b-4"><a href="/about" class="">SacrEllfarch</a></div><a href="/about/site" class="site-name">我的博客</a><h4 class="site-subtitle block" text="xs">Next Generation Static Blog Framework.</h4><div class="site-description my-1">把身心交予自由
+任其漂流</div></div><div class="links-of-author" data-v-5008cbc6 data-v-859e4808><!--[--><a class="sakura-icon-btn links-of-author-item" rel="noopener" href="https://github.com/SacrEllfarch" title="GitHub" target="_blank" style="color:#3a577a" data-v-859e4808><div class="i-ri-github-line icon" data-v-859e4808></div></a><a class="sakura-icon-btn links-of-author-item" rel="noopener" href="https://wpa.qq.com/msgrd?v=3&amp;uin=2091538824&amp;site=qq&amp;menu=yes" title="QQ" target="_blank" style="color:#7bda4f" data-v-859e4808><div class="i-ri-qq-line icon" data-v-859e4808></div></a><a class="sakura-icon-btn links-of-author-item" rel="noopener" href="https://steamcommunity.com/profiles/76561199137272001" title="Steam" target="_blank" style="color:#57a6d4" data-v-859e4808><div class="i-ri-steam-fill icon" data-v-859e4808></div></a><a class="sakura-icon-btn links-of-author-item" rel="noopener" href="mailto:2091538824thx@gmail.com" title="E-Mail" target="_blank" style="color:#e09f6288" data-v-859e4808><div class="i-ri-mail-line icon" data-v-859e4808></div></a><a class="sakura-icon-btn links-of-author-item" rel="noopener" href="/atom.xml" title="RSS" target="_blank" style="color:#5978dd" data-v-859e4808><div class="i-ri-rss-line icon" data-v-859e4808></div></a><!--]--></div><nav class="sakura-sidebar-link mt-4" data-v-5008cbc6 data-v-07dd0467><ul class="sakura-sidebar-link-items mx-auto" data-v-07dd0467 data-v-3c7b2d23><!--[--><li data-v-3c7b2d23><a href="/" class="va-link sakura-nav-link sakura-sidebar-link-item" title="首页" rel="noopener" data-v-3c7b2d23 data-v-8fa4db75><!--[--><span class="i-ri-home-5-line hvr-icon sakura-icon sakura-nav-link-icon mr-0.5" inline-flex data-v-8fa4db75></span><span truncate class="sakura-nav-link-text &lt;lg:hidden" data-v-8fa4db75>首页</span><!--[--><!----><!--]--><!--]--></a><!----></li><li data-v-3c7b2d23><a href="/archives/" class="va-link sakura-nav-link sakura-sidebar-link-item" title="归档" rel="noopener" data-v-3c7b2d23 data-v-8fa4db75><!--[--><span class="i-ri-archive-line hvr-icon sakura-icon sakura-nav-link-icon mr-0.5" inline-flex data-v-8fa4db75></span><span truncate class="sakura-nav-link-text &lt;lg:hidden" data-v-8fa4db75>归档</span><!--[--><!----><!--]--><!--]--></a><!----></li><li data-v-3c7b2d23><a href="/categories/" class="va-link sakura-nav-link sakura-sidebar-link-item" title="分类" rel="noopener" data-v-3c7b2d23 data-v-8fa4db75><!--[--><span class="i-ri-folder-2-line hvr-icon sakura-icon sakura-nav-link-icon mr-0.5" inline-flex data-v-8fa4db75></span><span truncate class="sakura-nav-link-text &lt;lg:hidden" data-v-8fa4db75>分类</span><!--[--><!----><!--]--><!--]--></a><!----></li><li data-v-3c7b2d23><a aria-current="page" href="/tags/" class="router-link-active router-link-exact-active va-link sakura-nav-link sakura-sidebar-link-item" title="标签" rel="noopener" data-v-3c7b2d23 data-v-8fa4db75><!--[--><span class="i-ri-price-tag-3-line hvr-icon sakura-icon sakura-nav-link-icon mr-0.5" inline-flex data-v-8fa4db75></span><span truncate class="sakura-nav-link-text &lt;lg:hidden" data-v-8fa4db75>标签</span><!--[--><!----><!--]--><!--]--></a><!----></li><li data-v-3c7b2d23><a href="/links/" class="va-link sakura-nav-link sakura-sidebar-link-item" title="友链" rel="noopener" data-v-3c7b2d23 data-v-8fa4db75><!--[--><span class="i-ri-links-line hvr-icon sakura-icon sakura-nav-link-icon mr-0.5" inline-flex data-v-8fa4db75></span><span truncate class="sakura-nav-link-text &lt;lg:hidden" data-v-8fa4db75>友链</span><!--[--><!----><!--]--><!--]--></a><!----></li><li data-v-3c7b2d23><a href="/about/" class="va-link sakura-nav-link sakura-sidebar-link-item" title="关于" rel="noopener" data-v-3c7b2d23 data-v-8fa4db75><!--[--><span class="i-ri-user-smile-line hvr-icon sakura-icon sakura-nav-link-icon mr-0.5" inline-flex data-v-8fa4db75></span><span truncate class="sakura-nav-link-text &lt;lg:hidden" data-v-8fa4db75>关于</span><!--[--><!----><!--]--><!--]--></a><!----></li><!--]--></ul><div id="marker" data-v-07dd0467></div></nav><!--]--><!--[--><div class="sakura-copyright copyright flex flex-col items-center justify-center" p="1" data-v-5008cbc6 data-v-d2238871><div class="sakura-running-time" data-v-d2238871>正在计算运行时间...</div><div class="sakura-copyright-main flex items-center justify-center" data-v-d2238871><span data-v-d2238871> Copyright © <span itemprop="copyrightYear" data-v-d2238871><!--[-->2024 - <!--]--> 2026</span><span itemprop="copyrightHolder" data-v-d2238871>  By SacrEllfarch</span></span><!----><!----></div></div><!--]--></aside></div><!--[--><!-- NOTE: Avoid placing sakura-sidebar-offset at the top; it affects absolute positioning --><div class="app-container custom-background antialiased has-tags-layout" style="" data-v-ad1d6124><!--[--><!----><!--]--><!--[--><!--[--><!-- NOTE: Dynamic :class switching affects triggering the component loader for some reason, not sure why. --><header flex="~" w="full" fixed top-0 z-100 class="sakura-navbar sakura-sidebar-offset" data-v-ad1d6124><div flex="~ items-center justify-between" w="full" class="active-header no-animation sakura-safe-padding navbar-content"><!--[--><div flex="~ items-center"><div class="md:hidden flex-center"><!----><button class="mobile-btn mr-4" aria-label="mobile navigation" aria-expanded="false" data-v-02381b92><!-- TODO: Add more color configurations? --><span class="bg-$sakura-color-action" data-v-02381b92></span><span class="bg-$sakura-color-action" data-v-02381b92></span><span class="bg-$sakura-color-action" data-v-02381b92></span></button></div><div class="sakura-navbar-brand" data-v-82764ccf><!----><ruby class="navbar-title relative" data-v-82764ccf><a href="/" class="logo-link" aria-label="我的博客" data-v-82764ccf><!--[--><span mr1 data-v-82764ccf>SacrEllfarch</span><span mr1 class="sakura-hvr-rotate" data-v-82764ccf>Blog</span><span data-v-82764ccf></span><!--]--></a><!----></ruby></div></div><!--]--><!--[--><nav class="sakura-navbar-link sakura-preload sakura-fade-in-left" data-v-f476f966><!--[--><div class="sakura-dropdown sakura-navbar-link-item" aria-haspopup="true" aria-expanded="false" data-v-f476f966 data-v-b8ab2fde data-v-fd419952><!--[--><a href="/" class="va-link sakura-nav-link" title="首页" rel="noopener" data-v-b8ab2fde data-v-8fa4db75><!--[--><span class="i-ri-home-5-line hvr-icon sakura-icon sakura-nav-link-icon mr-0.5" inline-flex data-v-8fa4db75></span><span truncate class="sakura-nav-link-text &lt;lg:hidden" data-v-8fa4db75>首页</span><!--[--><!--]--><!--]--></a><!--]--><!----></div><div class="sakura-dropdown sakura-navbar-link-item" aria-haspopup="true" aria-expanded="false" data-v-f476f966 data-v-b8ab2fde data-v-fd419952><!--[--><a href="/archives/" class="va-link sakura-nav-link" title="归档" rel="noopener" data-v-b8ab2fde data-v-8fa4db75><!--[--><span class="i-ri-archive-line hvr-icon sakura-icon sakura-nav-link-icon mr-0.5" inline-flex data-v-8fa4db75></span><span truncate class="sakura-nav-link-text &lt;lg:hidden" data-v-8fa4db75>归档</span><!--[--><!--]--><!--]--></a><!--]--><!----></div><div class="sakura-dropdown sakura-navbar-link-item" aria-haspopup="true" aria-expanded="false" data-v-f476f966 data-v-b8ab2fde data-v-fd419952><!--[--><a href="/categories/" class="va-link sakura-nav-link" title="分类" rel="noopener" data-v-b8ab2fde data-v-8fa4db75><!--[--><span class="i-ri-folder-2-line hvr-icon sakura-icon sakura-nav-link-icon mr-0.5" inline-flex data-v-8fa4db75></span><span truncate class="sakura-nav-link-text &lt;lg:hidden" data-v-8fa4db75>分类</span><!--[--><!--]--><!--]--></a><!--]--><!----></div><div class="sakura-dropdown sakura-navbar-link-item" aria-haspopup="true" aria-expanded="false" data-v-f476f966 data-v-b8ab2fde data-v-fd419952><!--[--><a aria-current="page" href="/tags/" class="router-link-active router-link-exact-active va-link sakura-nav-link" title="标签" rel="noopener" data-v-b8ab2fde data-v-8fa4db75><!--[--><span class="i-ri-price-tag-3-line hvr-icon sakura-icon sakura-nav-link-icon mr-0.5" inline-flex data-v-8fa4db75></span><span truncate class="sakura-nav-link-text &lt;lg:hidden" data-v-8fa4db75>标签</span><!--[--><!--]--><!--]--></a><!--]--><!----></div><div class="sakura-dropdown sakura-navbar-link-item" aria-haspopup="true" aria-expanded="false" data-v-f476f966 data-v-b8ab2fde data-v-fd419952><!--[--><a href="/links/" class="va-link sakura-nav-link" title="友链" rel="noopener" data-v-b8ab2fde data-v-8fa4db75><!--[--><span class="i-ri-links-line hvr-icon sakura-icon sakura-nav-link-icon mr-0.5" inline-flex data-v-8fa4db75></span><span truncate class="sakura-nav-link-text &lt;lg:hidden" data-v-8fa4db75>友链</span><!--[--><!--]--><!--]--></a><!--]--><!----></div><div class="sakura-dropdown sakura-navbar-link-item" aria-haspopup="true" aria-expanded="false" data-v-f476f966 data-v-b8ab2fde data-v-fd419952><!--[--><a href="/about/" class="va-link sakura-nav-link" title="关于" rel="noopener" data-v-b8ab2fde data-v-8fa4db75><!--[--><span class="i-ri-user-smile-line hvr-icon sakura-icon sakura-nav-link-icon mr-0.5" inline-flex data-v-8fa4db75></span><span truncate class="sakura-nav-link-text &lt;lg:hidden" data-v-8fa4db75>关于</span><!--[--><!--]--><!--]--></a><!--]--><!----></div><!--]--><!----></nav><!--]--><!--[--><div h-full print:op0 flex="~ center" class="sakura-navbar-tools"><button class="sakura-icon-btn sakura-toggle-dark select-none" type="button" aria-label="Toggle Color Scheme"><div class="i-ri-sun-line"></div></button><!----><div flex="center"><button class="sakura-icon-btn sakura-search-btn" title="搜索"><div i-mdi-search></div></button><!----></div><!----><!--[--><!--]--></div><!--]--></div></header><!--]--><!--]--><main class="sakura-sidebar-offset sakura-main" data-v-ad1d6124><!--[--><article class="sakura-page items-center" flex="~ col"><!--[--><header class="sakura-page-header space-y-1" flex="~ center items-end justify-center" data-v-0c32ef5d><!----><div class="sakura-safe-padding sakura-header-container pb-25px" data-v-0c32ef5d><!--[--><div flex="~" class="sakura-header-title" data-v-0c32ef5d><div class="sakura-title sakura-braced-text flex-center" flex="~ items-center" data-v-0c32ef5d data-v-afcc290f><!--[--><div m="r-1" inline-flex align-top class="i-ri-price-tag-3-line icon" data-v-afcc290f></div><!--]--><span data-v-afcc290f>标签</span><!----></div></div><!--]--><!--[--><!--]--></div></header><!--]--><!--[--><div class="sakura-triple-columns-base sakura-triple-columns"><aside><!--[--><!--]--></aside><div><!--[--><!-- This 'content' cannot be change. For more information, see https://github.com/YunYouJun/valaxy/blob/a7d24dfabb1022e20ec12bb1938fd272fd1e19e6/packages/valaxy/client/composables/outline/anchor.ts#L42 --><div class="content sakura-safe-padding sakura-page-content grid"><!--[--><!--]--><!--[--><!--[--><!--[--><!--]--><!--[--><!--]--><!--[--><!--[--><!--[--><div><div class="sakura-text-light" text="center" p="2">共计 5 个标签</div><div class="sakura-tag-orbit" aria-label="标签星轨图"><div class="sakura-tag-orbit-core"><span class="i-ri-price-tag-3-line"></span><strong>5</strong></div><!--[--><button type="button" class="sakura-tag-node" style="--sakura-tag-color:#ff4e6a;--sakura-tag-bg:#ff4e6a22;--tag-x:50%;--tag-y:20%;--tag-scale:1.1600000000000001;"><span>#笔记</span><small>2</small></button><button type="button" class="sakura-tag-node" style="--sakura-tag-color:#ff8a34;--sakura-tag-bg:#ff8a3422;--tag-x:86.14014761921584%;--tag-y:40.72949016875158%;--tag-scale:1.1600000000000001;"><span>#飞鸟集</span><small>2</small></button><button type="button" class="sakura-tag-node" style="--sakura-tag-color:#e0a800;--sakura-tag-bg:#e0a80022;--tag-x:72.33583958711398%;--tag-y:74.27050983124843%;--tag-scale:1.03;"><span>#Flask</span><small>1</small></button><button type="button" class="sakura-tag-node" style="--sakura-tag-color:#2fbf71;--sakura-tag-bg:#2fbf7122;--tag-x:27.664160412886027%;--tag-y:74.27050983124843%;--tag-scale:1.03;"><span>#valaxy</span><small>1</small></button><button type="button" class="sakura-tag-node" style="--sakura-tag-color:#13a8c8;--sakura-tag-bg:#13a8c822;--tag-x:13.859852380784162%;--tag-y:40.72949016875158%;--tag-scale:1.03;"><span>#来自岛</span><small>1</small></button><!--]--></div><div class="items-end justify-center" flex="~ wrap" gap="1"><!--[--><button class="sakura-button sakura-button-primary sakura-tag-button" style="--sakura-tag-color:#ff4e6a;--sakura-tag-bg:#ff4e6a22;" data-v-7b5cffa8><!--[--><span mx-1 inline-flex>Flask</span><span inline-flex text="xs">[1]</span><!--]--></button><button class="sakura-button sakura-button-primary sakura-tag-button" style="--sakura-tag-color:#ff8a34;--sakura-tag-bg:#ff8a3422;" data-v-7b5cffa8><!--[--><span mx-1 inline-flex>valaxy</span><span inline-flex text="xs">[1]</span><!--]--></button><button class="sakura-button sakura-button-primary sakura-tag-button" style="--sakura-tag-color:#e0a800;--sakura-tag-bg:#e0a80022;" data-v-7b5cffa8><!--[--><span mx-1 inline-flex>来自岛</span><span inline-flex text="xs">[1]</span><!--]--></button><button class="sakura-button sakura-button-primary sakura-tag-button" style="--sakura-tag-color:#2fbf71;--sakura-tag-bg:#2fbf7122;" data-v-7b5cffa8><!--[--><span mx-1 inline-flex>笔记</span><span inline-flex text="xs">[2]</span><!--]--></button><button class="sakura-button sakura-button-primary sakura-tag-button" style="--sakura-tag-color:#13a8c8;--sakura-tag-bg:#13a8c822;" data-v-7b5cffa8><!--[--><span mx-1 inline-flex>飞鸟集</span><span inline-flex text="xs">[2]</span><!--]--></button><!--]--></div></div><!--]--><!--]--><!--]--><!--[--><!--]--><!--[--><!--]--><!--[--><!--]--><!----><!--[--><!--]--><!--]--><!--]--></div><!--]--></div><aside><!--[--><!--]--></aside></div><!----><!----><!----><!--]--></article><!--]--></main><!--[--><!----><!--]--><!--[--><footer class="sakura-footer h-$sakura-footer-height sakura-sidebar-offset" text="center sm" style="color:var(--va-c-text-light);" data-v-ad1d6124><!----><div class="sakura-copyright copyright flex flex-col items-center justify-center" p="1" data-v-d2238871><div class="sakura-running-time" data-v-d2238871>正在计算运行时间...</div><div class="sakura-copyright-main flex items-center justify-center" data-v-d2238871><span data-v-d2238871> Copyright © <span itemprop="copyrightYear" data-v-d2238871><!--[-->2024 - <!--]--> 2026</span><span itemprop="copyrightHolder" data-v-d2238871>  By SacrEllfarch</span></span><!----><!----></div></div><div class="powered" m="2" translate="no"><span>由 <a href="git+https://github.com/YunYouJun/valaxy.git" target="_blank" rel="noopener">Valaxy</a> v0.28.5 驱动</span> | <span>主题 <a href="https://github.com/WRXinYue/valaxy-theme-sakura" title="valaxy-theme-sakura" target="_blank">Sakura</a> v0.10.2</span></div><!--[--><!--]--></footer><!--]--><!-- <SakuraChangSkin /> --></div><!--]--><!--]--><!--[--><!--]--><!----><!--]--></div><script>window.__INITIAL_STATE__='{"pinia":{"app":{"showLoading":true},"sakura-app":{"positions":{},"loadMultiple":1,"paginationTargets":[],"paginationElementPositionsNumber":0,"wallpaperIndex":0,"wallpaperLength":0,"wallpaperIsPlaying":false},"site":{},"routerStore":{}}}'</script><script type="application/ld+json" data-hid="schema-org-graph">{"@context":"https://schema.org","@graph":[{"@id":"https://sacrellfarch.github.io/#identity","@type":"Person","name":"SacrEllfarch","url":"https://sacrellfarch.github.io/","image":{"@id":"https://sacrellfarch.github.io/#/schema/image/1"},"sameAs":["https://github.com/SacrEllfarch","https://wpa.qq.com/msgrd?v=3&uin=2091538824&site=qq&menu=yes","https://steamcommunity.com/profiles/76561199137272001","mailto:2091538824thx@gmail.com","/atom.xml"]},{"@id":"https://sacrellfarch.github.io/#website","@type":"WebSite","dateModified":"2026-05-05T16:42:27.183Z","datePublished":"2026-05-05T16:42:27.183Z","inLanguage":"zh-CN","name":"标签","url":"https://sacrellfarch.github.io/","publisher":{"@id":"https://sacrellfarch.github.io/#identity"}},{"@id":"https://sacrellfarch.github.io/#webpage","description":"把身心交予自由\n任其漂流","name":"标签","url":"https://sacrellfarch.github.io/","@type":["WebPage","CollectionPage"],"about":{"@id":"https://sacrellfarch.github.io/#identity"},"isPartOf":{"@id":"https://sacrellfarch.github.io/#website"},"potentialAction":[{"@type":"ReadAction","target":["https://sacrellfarch.github.io/"]}]},{"@id":"https://sacrellfarch.github.io/#/schema/image/1","@type":"ImageObject","contentUrl":"https://sacrellfarch.github.io/avatar.jpg","inLanguage":"zh-CN","url":"https://sacrellfarch.github.io/avatar.jpg"}]}</script>
+  
+</body>
+</html>

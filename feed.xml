@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>我的博客</title>
+        <link>https://sacrellfarch.github.io/</link>
+        <description>把身心交予自由
+任其漂流</description>
+        <lastBuildDate>Tue, 05 May 2026 16:42:43 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <image>
+            <title>我的博客</title>
+            <url>https://sacrellfarch.github.io/avatar.jpg</url>
+            <link>https://sacrellfarch.github.io/</link>
+        </image>
+        <copyright>CC BY-NC-SA 4.0 2026 © SacrEllfarch</copyright>
+        <atom:link href="https://sacrellfarch.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Flask 学习路线与实战笔记：从路由到部署]]></title>
+            <link>https://sacrellfarch.github.io/posts/flask-learning-anchor</link>
+            <guid isPermaLink="false">https://sacrellfarch.github.io/posts/flask-learning-anchor</guid>
+            <pubDate>Thu, 30 Apr 2026 02:30:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>写在前面</h2>
+<p>Flask 是 Python Web 开发里很适合作为入门的框架。它足够轻，核心概念不多，但又没有把 Web 开发的关键问题藏起来：路由、请求、响应、模板、数据库、登录态、配置、测</p>
+<br/><p>访问 <a href="https://sacrellfarch.github.io/posts/flask-learning-anchor" target="_blank">https://sacrellfarch.github.io/posts/flask-learning-anchor</a> 阅读全文。</p>]]></content:encoded>
+            <author>2091538824thx@gmail.com (SacrEllfarch)</author>
+            <enclosure url="https://sacrellfarch.github.io/images/kaicy.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[记日]]></title>
+            <link>https://sacrellfarch.github.io/posts/the_day-iwakeup</link>
+            <guid isPermaLink="false">https://sacrellfarch.github.io/posts/the_day-iwakeup</guid>
+            <pubDate>Wed, 29 Apr 2026 02:07:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>小巧思</h2>
+<p>最近些许忙碌即便不知道在忙些什么，如你所见这个网站几乎全是让ai给搭的，科班出生的thx最后对于这个网站的贡献大概是类似于某个文科生一样贡献了些许墨水和网站布局以及动画效果的思</p>
+<br/><p>访问 <a href="https://sacrellfarch.github.io/posts/the_day-iwakeup" target="_blank">https://sacrellfarch.github.io/posts/the_day-iwakeup</a> 阅读全文。</p>]]></content:encoded>
+            <author>2091538824thx@gmail.com (SacrEllfarch)</author>
+            <enclosure url="https://sacrellfarch.github.io/images/sea.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[堂吉诃德式的冲锋]]></title>
+            <link>https://sacrellfarch.github.io/posts/ask_first</link>
+            <guid isPermaLink="false">https://sacrellfarch.github.io/posts/ask_first</guid>
+            <pubDate>Tue, 28 Apr 2026 04:17:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>奇幻色彩</h2>
+<p>某日，一个奇怪的家伙在BOSS直聘上面联系到了thx（虽然说大概率也是某种海投</p>
+<p>他二话不说直接甩给我一个github仓库，里面充满了他对于ai时代的理解和赚钱的构想</p>
+<br/><p>访问 <a href="https://sacrellfarch.github.io/posts/ask_first" target="_blank">https://sacrellfarch.github.io/posts/ask_first</a> 阅读全文。</p>]]></content:encoded>
+            <author>2091538824thx@gmail.com (SacrEllfarch)</author>
+            <enclosure url="https://sacrellfarch.github.io/images/elaina-cover.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[只是一个测试文件]]></title>
+            <link>https://sacrellfarch.github.io/posts/hello-valaxy</link>
+            <guid isPermaLink="false">https://sacrellfarch.github.io/posts/hello-valaxy</guid>
+            <pubDate>Sat, 25 Apr 2026 08:07:48 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>Valaxy</h2>
+<p>Next Generation Static Blog Framework.</p>
+<p>Write your first post!</p>
+<h2>Usage</h2>
+<p>Modify `valaxy</p>
+<br/><p>访问 <a href="https://sacrellfarch.github.io/posts/hello-valaxy" target="_blank">https://sacrellfarch.github.io/posts/hello-valaxy</a> 阅读全文。</p>]]></content:encoded>
+            <author>2091538824thx@gmail.com (SacrEllfarch)</author>
+            <enclosure url="https://sacrellfarch.github.io/images/hello-valaxy-cover.jpeg" length="0" type="image/jpeg"/>
+        </item>
+    </channel>
+</rss>
