@@ -509,6 +509,21 @@
   }
 }
 
+.has-links-layout {
+  .link-avatar {
+    flex: 0 0 64px;
+  }
+
+  .link-avatar :is(.v-progressive-image-main, .v-progressive-image-placeholder) {
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  .link-avatar .v-progressive-image-placeholder {
+    transform: none;
+  }
+}
+
 .has-tags-layout,
 .has-categories-layout {
   .sakura-page-content {
