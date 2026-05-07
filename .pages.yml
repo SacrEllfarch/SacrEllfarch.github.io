@@ -1,0 +1,152 @@
+media:
+  - name: images
+    label: 图片
+    input: public/images
+    output: /images
+    categories: [image]
+    extensions: [jpg, jpeg, png, gif, webp, svg]
+    rename: safe
+
+content:
+  - name: posts
+    label: 文章
+    type: collection
+    path: pages/posts
+    filename:
+      template: "{year}-{month}-{day}-{primary}.md"
+      field: create
+    format: yaml-frontmatter
+    subfolders: false
+    view:
+      primary: title
+      fields: [date, updated, categories, tags]
+      sort: date
+      order: desc
+    fields:
+      - name: title
+        label: 标题
+        type: string
+        required: true
+      - name: date
+        label: 发布时间
+        type: date
+        required: true
+        options:
+          time: true
+          format: "yyyy-MM-dd HH:mm:ss"
+      - name: updated
+        label: 更新时间
+        type: date
+        default: ""
+        options:
+          time: true
+          format: "yyyy-MM-dd HH:mm:ss"
+      - name: cover
+        label: 封面图
+        type: image
+        options:
+          media: images
+      - name: image
+        label: 社交分享图
+        type: image
+        description: 通常与封面图保持一致；留空时由主题或页面兜底处理。
+        options:
+          media: images
+      - name: categories
+        label: 分类
+        type: string
+        list: true
+      - name: tags
+        label: 标签
+        type: string
+        list: true
+      - name: body
+        label: 正文
+        type: rich-text
+        options:
+          format: markdown
+          media: images
+          switcher: true
+
+  - name: pages
+    label: 页面
+    type: group
+    items:
+      - name: about
+        label: 关于我
+        type: file
+        path: pages/about/index.md
+        format: yaml-frontmatter
+        fields:
+          - name: title
+            label: 标题
+            type: string
+            required: true
+          - name: body
+            label: 正文
+            type: rich-text
+            options:
+              format: markdown
+              media: images
+              switcher: true
+      - name: site_notes
+        label: 建站记录
+        type: file
+        path: pages/about/site.md
+        format: yaml-frontmatter
+        fields:
+          - name: title
+            label: 标题
+            type: string
+            required: true
+          - name: body
+            label: 正文
+            type: rich-text
+            options:
+              format: markdown
+              media: images
+              switcher: true
+
+  - name: friends
+    label: 友链
+    type: file
+    path: public/friends.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        label: 名称
+        type: string
+        required: true
+      - name: blog
+        label: 博客名
+        type: string
+      - name: url
+        label: 链接
+        type: string
+        required: true
+      - name: avatar
+        label: 头像
+        type: image
+        options:
+          media: images
+      - name: desc
+        label: 描述
+        type: text
+      - name: color
+        label: 主题色
+        type: string
+        pattern:
+          regex: "^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$"
+          message: "请输入十六进制颜色，例如 #8b5cf6"
+
+settings:
+  content:
+    merge: true
+  commit:
+    identity: app
+    templates:
+      create: "content(create): {path}"
+      update: "content(update): {path}"
+      delete: "content(delete): {path}"
+      rename: "content(rename): {oldPath} -> {newPath}"
