@@ -32,7 +32,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - name: 📦 Install Dependencies
-        run: corepack enable && pnpm install --frozen-lockfile
+        run: corepack enable && corepack prepare pnpm@10.33.2 --activate && pnpm install --frozen-lockfile
 
       - name: 🌌 Build Valaxy Blog
         run: pnpm build
