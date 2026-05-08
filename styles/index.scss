@@ -512,11 +512,28 @@
 .has-links-layout {
   .link-avatar {
     flex: 0 0 64px;
+    overflow: hidden;
+    border-radius: 50%;
+    background: #fff;
   }
 
-  .link-avatar :is(.v-progressive-image-main, .v-progressive-image-placeholder) {
+  .link-avatar .v-progressive-image {
+    height: 100%;
+    overflow: hidden;
+    border-radius: inherit;
+    background: transparent;
+  }
+
+  .link-avatar .v-progressive-image-loading::before,
+  .link-avatar .v-progressive-image-placeholder {
+    display: none;
+  }
+
+  .link-avatar .v-progressive-image-main {
+    z-index: 1;
+    opacity: 1;
     object-fit: cover;
-    object-position: 47% 34%;
+    object-position: center;
   }
 }
 
