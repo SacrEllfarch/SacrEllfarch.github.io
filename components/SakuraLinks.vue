@@ -95,14 +95,17 @@ function handleAvatarError(event: Event) {
   }
 
   .link-avatar {
-    display: inline-flex;
+    display: inline-grid;
     flex: 0 0 64px;
+    place-items: center;
     width: 64px;
     height: 64px;
     overflow: hidden;
     border: 1px solid var(--primary-color, gray);
     border-radius: 50%;
-    background-color: #fff;
+    background:
+      radial-gradient(circle at 35% 30%, rgb(255 255 255 / 90%), rgb(255 255 255 / 62%) 58%, rgb(255 255 255 / 86%)),
+      color-mix(in srgb, var(--primary-color, gray) 12%, white);
     transition: 0.5s;
 
     &:hover {
@@ -111,9 +114,10 @@ function handleAvatarError(event: Event) {
 
     img {
       display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      width: calc(100% - 6px);
+      height: calc(100% - 6px);
+      border-radius: 50%;
+      object-fit: contain;
       object-position: center;
     }
   }

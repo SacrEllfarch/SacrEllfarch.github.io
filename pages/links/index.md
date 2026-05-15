@@ -6,6 +6,6 @@ links: /friends.json
 random: false
 ---
 
-这里展示站长维护的个人站点入口，后续也可以继续补充真正互换的友链。
+这里收录站点相关入口与朋友们的博客、主页和手记，方便在不同创作者之间互相访问。
 
 <SakuraLinks :links="frontmatter.links" :random="frontmatter.random" />
