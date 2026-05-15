@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>我的博客</title>
+        <link>https://sacrellfarch.github.io/</link>
+        <description>把身心交予自由
+任其漂流</description>
+        <lastBuildDate>Fri, 15 May 2026 08:31:36 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <image>
+            <title>我的博客</title>
+            <url>https://sacrellfarch.github.io/avatar.jpg</url>
+            <link>https://sacrellfarch.github.io/</link>
+        </image>
+        <copyright>CC BY-NC-SA 4.0 2026 © SacrEllfarch</copyright>
+        <atom:link href="https://sacrellfarch.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[五月十五日]]></title>
+            <link>https://sacrellfarch.github.io/posts/2026-05-15-</link>
+            <guid isPermaLink="false">https://sacrellfarch.github.io/posts/2026-05-15-</guid>
+            <pubDate>Fri, 15 May 2026 01:09:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>说的话越多，言语好像就会变得越发廉价</p>
+<p>多的东西，总是不值钱的</p>
+<br/><p>访问 <a href="https://sacrellfarch.github.io/posts/2026-05-15-" target="_blank">https://sacrellfarch.github.io/posts/2026-05-15-</a> 阅读全文。</p>]]></content:encoded>
+            <author>2091538824thx@gmail.com (SacrEllfarch)</author>
+            <enclosure url="https://sacrellfarch.github.io/images/1000367162.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[失眠]]></title>
+            <link>https://sacrellfarch.github.io/posts/2026-05-14-</link>
+            <guid isPermaLink="false">https://sacrellfarch.github.io/posts/2026-05-14-</guid>
+            <pubDate>Thu, 14 May 2026 01:24:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>是夜，所以再度失眠，即便这两者之间并不应该有什么关联</p>
+<h2>不眠夜</h2>
+<p>下班后牢魏邀我去金粒门采购，他顺便还带上了航哥，从科创港骑上共享单车到与他们碰面：闻湘月的小晚餐，然后是地铁坐去五一广场的一家金</p>
+<br/><p>访问 <a href="https://sacrellfarch.github.io/posts/2026-05-14-" target="_blank">https://sacrellfarch.github.io/posts/2026-05-14-</a> 阅读全文。</p>]]></content:encoded>
+            <author>2091538824thx@gmail.com (SacrEllfarch)</author>
+            <enclosure url="https://sacrellfarch.github.io/images/1000367131.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[囿]]></title>
+            <link>https://sacrellfarch.github.io/posts/2026-05-13-</link>
+            <guid isPermaLink="false">https://sacrellfarch.github.io/posts/2026-05-13-</guid>
+            <pubDate>Wed, 13 May 2026 01:13:00 GMT</pubDate>
+            <content:encoded><![CDATA[<blockquote>
+<p>到底是什么时候开始，逐渐感觉自己好像有点变老了呢</p>
+</blockquote>
+<h2>思绪</h2>
+<p>只是躺在寝室的床上，公司的电脑搭在自己身上，我准备着明天给老黄的论文汇报，戴着耳机，里面放的已经不再是什么纯音乐，而是什么情歌，秋</p>
+<br/><p>访问 <a href="https://sacrellfarch.github.io/posts/2026-05-13-" target="_blank">https://sacrellfarch.github.io/posts/2026-05-13-</a> 阅读全文。</p>]]></content:encoded>
+            <author>2091538824thx@gmail.com (SacrEllfarch)</author>
+            <enclosure url="https://sacrellfarch.github.io/images/33170099.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[恍惚]]></title>
+            <link>https://sacrellfarch.github.io/posts/2026-05-11-</link>
+            <guid isPermaLink="false">https://sacrellfarch.github.io/posts/2026-05-11-</guid>
+            <pubDate>Mon, 11 May 2026 22:42:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>我已急哭，接上了cms结果每次都写一半直接把电脑关了第二天打开电脑发现写的东西全都不见，如此往复了足足四遍，大概西西弗斯都没这么能折腾：好像还不如直接贴一个md文件上来，但在我是懒人，曾经看不起的cm</p>
+<br/><p>访问 <a href="https://sacrellfarch.github.io/posts/2026-05-11-" target="_blank">https://sacrellfarch.github.io/posts/2026-05-11-</a> 阅读全文。</p>]]></content:encoded>
+            <author>2091538824thx@gmail.com (SacrEllfarch)</author>
+            <enclosure url="https://sacrellfarch.github.io/images/84741695.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Flask 学习路线与实战笔记：从路由到部署]]></title>
+            <link>https://sacrellfarch.github.io/posts/flask-learning-anchor</link>
+            <guid isPermaLink="false">https://sacrellfarch.github.io/posts/flask-learning-anchor</guid>
+            <pubDate>Thu, 30 Apr 2026 02:30:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>写在前面</h2>
+<p>Flask 是 Python Web 开发里很适合作为入门的框架。它足够轻，核心概念不多，但又没有把 Web 开发的关键问题藏起来：路由、请求、响应、模板、数据库、登录态、配置、测</p>
+<br/><p>访问 <a href="https://sacrellfarch.github.io/posts/flask-learning-anchor" target="_blank">https://sacrellfarch.github.io/posts/flask-learning-anchor</a> 阅读全文。</p>]]></content:encoded>
+            <author>2091538824thx@gmail.com (SacrEllfarch)</author>
+            <enclosure url="https://sacrellfarch.github.io/images/kaicy.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[记日]]></title>
+            <link>https://sacrellfarch.github.io/posts/the_day-iwakeup</link>
+            <guid isPermaLink="false">https://sacrellfarch.github.io/posts/the_day-iwakeup</guid>
+            <pubDate>Wed, 29 Apr 2026 02:07:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>小巧思</h2>
+<p>最近些许忙碌即便不知道在忙些什么，如你所见这个网站几乎全是让ai给搭的，科班出生的thx最后对于这个网站的贡献大概是类似于某个文科生一样贡献了些许墨水和网站布局以及动画效果的思</p>
+<br/><p>访问 <a href="https://sacrellfarch.github.io/posts/the_day-iwakeup" target="_blank">https://sacrellfarch.github.io/posts/the_day-iwakeup</a> 阅读全文。</p>]]></content:encoded>
+            <author>2091538824thx@gmail.com (SacrEllfarch)</author>
+            <enclosure url="https://sacrellfarch.github.io/images/sea.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[堂吉诃德式的冲锋]]></title>
+            <link>https://sacrellfarch.github.io/posts/ask_first</link>
+            <guid isPermaLink="false">https://sacrellfarch.github.io/posts/ask_first</guid>
+            <pubDate>Tue, 28 Apr 2026 04:17:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>奇幻色彩</h2>
+<p>某日，一个奇怪的家伙在BOSS直聘上面联系到了thx（虽然说大概率也是某种海投</p>
+<p>他二话不说直接甩给我一个github仓库，里面充满了他对于ai时代的理解和赚钱的构想</p>
+<br/><p>访问 <a href="https://sacrellfarch.github.io/posts/ask_first" target="_blank">https://sacrellfarch.github.io/posts/ask_first</a> 阅读全文。</p>]]></content:encoded>
+            <author>2091538824thx@gmail.com (SacrEllfarch)</author>
+            <enclosure url="https://sacrellfarch.github.io/images/elaina-cover.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[只是一个测试文件]]></title>
+            <link>https://sacrellfarch.github.io/posts/hello-valaxy</link>
+            <guid isPermaLink="false">https://sacrellfarch.github.io/posts/hello-valaxy</guid>
+            <pubDate>Sat, 25 Apr 2026 08:07:48 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>Valaxy</h2>
+<p>Next Generation Static Blog Framework.</p>
+<p>Write your first post!</p>
+<h2>Usage</h2>
+<p>Modify `valaxy</p>
+<br/><p>访问 <a href="https://sacrellfarch.github.io/posts/hello-valaxy" target="_blank">https://sacrellfarch.github.io/posts/hello-valaxy</a> 阅读全文。</p>]]></content:encoded>
+            <author>2091538824thx@gmail.com (SacrEllfarch)</author>
+            <enclosure url="https://sacrellfarch.github.io/images/hello-valaxy-cover.jpeg" length="0" type="image/jpeg"/>
+        </item>
+    </channel>
+</rss>

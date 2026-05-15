@@ -1,0 +1,26 @@
+[
+  {
+    "name": "SacrEllfarch",
+    "blog": "Terchdox.top",
+    "url": "https://terchdox.top/",
+    "avatar": "/images/9-1.png",
+    "desc": "个人主页，聚合博客、服务入口与在线状态。",
+    "color": "#8b5cf6"
+  },
+  {
+    "name": "Seigenkouso",
+    "blog": "Seigenkouso Lun",
+    "url": "https://seigenkouso.github.io/",
+    "avatar": "https://seigenkouso.github.io/icon.png?v=2",
+    "desc": "Lun Tian 的学术主页与个人介绍。",
+    "color": "#2563eb"
+  },
+  {
+    "name": "HimekoShini",
+    "blog": "姬向审维 HimekoShini 的手记",
+    "url": "https://HimekoShini.github.io/",
+    "avatar": "https://himekoshini.github.io/img/avatar.png",
+    "desc": "记录思考、学习与日常创作的手记。",
+    "color": "#ef4444"
+  }
+]

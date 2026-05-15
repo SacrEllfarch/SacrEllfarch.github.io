@@ -1,0 +1,1 @@
+import{M as e}from"./theme.B5wW_rcs.js";var t=e({cast(e){return e===`number`?{ratingValue:e}:e},defaults:{"@type":`Rating`,bestRating:5,worstRating:1}});export{t};
