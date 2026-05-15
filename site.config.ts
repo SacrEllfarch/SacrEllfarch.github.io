@@ -51,7 +51,16 @@ export default defineSiteConfig({
   ],
 
   search: {
-    enable: false,
+    enable: true,
+    provider: 'fuse',
+    type: 'fuse',
+  },
+
+  fuse: {
+    dataPath: 'valaxy-fuse-list.json',
+    options: {
+      keys: ['title', 'tags', 'categories', 'excerpt', 'content'],
+    },
   },
 
   statistics: {
