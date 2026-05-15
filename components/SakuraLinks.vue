@@ -116,9 +116,12 @@ function handleAvatarError(event: Event) {
       display: block;
       width: calc(100% - 6px);
       height: calc(100% - 6px);
+      max-width: none;
+      margin: 0;
       border-radius: 50%;
       object-fit: contain;
       object-position: center;
+      vertical-align: middle;
     }
   }
 
